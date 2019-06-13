@@ -8,6 +8,7 @@
  * @apiHeader Authorization API key required. 
  * @apiHeader Content-Type (application/json).
  * @apiParam {String} url URL for product page (required).
+ * @apiParam {String} merchant Id of a specific merchant (optional).
  * @apiParamExample {query} Input-Example
  *    http://api-prd.axesso.de/amz/amazon-lookup-product?url=https://www.amazon.com/dp/B01MQNPOUF
  *

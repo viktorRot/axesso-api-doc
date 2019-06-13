@@ -163,6 +163,13 @@ define({ "api": [
             "optional": false,
             "field": "url",
             "description": "<p>URL for product page (required).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "merchant",
+            "description": "<p>Id of a specific merchant (optional).</p>"
           }
         ]
       },
