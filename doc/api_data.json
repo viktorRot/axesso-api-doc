@@ -133,7 +133,7 @@
     "type": "get",
     "url": "/amz/amazon-lookup-product",
     "title": "Request Product Information",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "name": "GetProductInformation",
     "group": "Amazon",
     "header": {
@@ -351,13 +351,41 @@
             "optional": false,
             "field": "addon",
             "description": "<p>Indication for addon products.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "pantry",
+            "description": "<p>Indication for pantry products.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "minimalQuantity",
+            "description": "<p>Minimum quantity to purchase.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "dealPrice",
+            "description": "<p>Price if product is a deal.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "salePrice",
+            "description": "<p>Price if product is on sale.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response-example:",
-          "content": "    HTTP/1.1 200 OK\n\t{\n   \"responseStatus\": \"PRODUCT_FOUND_RESPONSE\",\n   \"responseMessage\": \"Product successfully found!\",\n   \"productTitle\": \"Product Title description\",\n   \"manufacturer\": \"Sony\",\n   \"countReview\": 19,\n   \"answeredQuestions\": 4,\n   \"productRating\": \"4.4 out of 5 stars\",\n   \"asin\": \"B002YOS9NU\",\n   \"sizeSelection\": []\n   \"soldBy\": \"Sony\",\n   \"fulfilledBy\": \"Amazon\",\n   \"warehouseAvailability\": \"In Stock.\",\n   \"retailPrice\": 137.55,\n   \"price\": 77.42,\n   \"priceShippingInformation\": \"free\",\n   \"priceSaving\": \"You Save: $59,58 (43%)\",\n   \"features\": [\n     \"Premium SOLID Stainless Steel\"\n   ],\n   \"imageUrlList\": [\n      \"https://images-na.ssl-images-amazon.com/images/I/71itkDwgyyL._SL1500_.jpg\",\n      \"https://images-na.ssl-images-amazon.com/images/I/716b2w17%2BPL._SL1500_.jpg\"\n  ],\n   \"productDescription\": \"Timberland White Ledge Mid Waterproof aus hochwertigem wasserfestem Vollnarbenleder für Schutz, lange Haltbarkeit und trockene Füße. Herausnehmbares EVA Fußbett für Dämpfung und Komfort. Waterproof Seam Sealed Construction für trockene Füße bei jedem Wetter. B.S.F.P Motion Efficiency System für beste Traktion auf jedem Untergrund. Abriebfeste Gummiaußensohle.\",\n   \"productDetails\": [\n\t\t{\n          \"name\": \"Item Weight\",\n          \"value\": \"2.46 Kg\"\n      },\n\t\t{\n          \"name\": \"Amazon Bestsellers Rank\",\n          \"value\": \"392,852 in Home & Kitchen (See Top 100 in Home & Kitchen) #336 in Dinner Sets\"\n      }\n\t  \"prime\": false\n\t  \"addon\": false\n\t}",
+          "content": "    HTTP/1.1 200 OK\n\t{\n   \"responseStatus\": \"PRODUCT_FOUND_RESPONSE\",\n   \"responseMessage\": \"Product successfully found!\",\n   \"productTitle\": \"Product Title description\",\n   \"manufacturer\": \"Sony\",\n   \"countReview\": 19,\n   \"answeredQuestions\": 4,\n   \"productRating\": \"4.4 out of 5 stars\",\n   \"asin\": \"B002YOS9NU\",\n   \"sizeSelection\": []\n   \"soldBy\": \"Sony\",\n   \"fulfilledBy\": \"Amazon\",\n   \"warehouseAvailability\": \"In Stock.\",\n   \"retailPrice\": 137.55,\n   \"price\": 77.42,\n   \"priceShippingInformation\": \"free\",\n   \"priceSaving\": \"You Save: $59,58 (43%)\",\n   \"features\": [\n     \"Premium SOLID Stainless Steel\"\n   ],\n   \"imageUrlList\": [\n      \"https://images-na.ssl-images-amazon.com/images/I/71itkDwgyyL._SL1500_.jpg\",\n      \"https://images-na.ssl-images-amazon.com/images/I/716b2w17%2BPL._SL1500_.jpg\"\n  ],\n   \"productDescription\": \"Timberland White Ledge Mid Waterproof aus hochwertigem wasserfestem Vollnarbenleder für Schutz, lange Haltbarkeit und trockene Füße. Herausnehmbares EVA Fußbett für Dämpfung und Komfort. Waterproof Seam Sealed Construction für trockene Füße bei jedem Wetter. B.S.F.P Motion Efficiency System für beste Traktion auf jedem Untergrund. Abriebfeste Gummiaußensohle.\",\n   \"productDetails\": [\n\t\t{\n          \"name\": \"Item Weight\",\n          \"value\": \"2.46 Kg\"\n      },\n\t\t{\n          \"name\": \"Amazon Bestsellers Rank\",\n          \"value\": \"392,852 in Home & Kitchen (See Top 100 in Home & Kitchen) #336 in Dinner Sets\"\n      }\n\t  \"prime\": false\n\t  \"addon\": false\n\t  \"pantry\": false\n\t  \"minimalQuantity\": null\n\t  \"dealPrice\": 71.42\n\t  \"salePrice\": 0.0\n\t}",
           "type": "json"
         }
       ]
@@ -924,5 +952,233 @@
     "group": "C__Users_ROTAEV_Desktop_Viktor_DEV_Service_Access_git_axesso_axesso_api_doc_doc_main_js",
     "groupTitle": "C__Users_ROTAEV_Desktop_Viktor_DEV_Service_Access_git_axesso_axesso_api_doc_doc_main_js",
     "name": ""
+  },
+  {
+    "type": "get",
+    "url": "/wlm/walmart-lookup-product",
+    "title": "Request Product Information",
+    "version": "1.0.0",
+    "name": "GetProductInformation",
+    "group": "Walmart",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>API key required.</p>"
+          },
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>(application/json).</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "url",
+            "description": "<p>URL for product page (required).</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Input-Example",
+          "content": "http://api-wlm.axesso.de/wlm/walmart-lookup-product?url=https://www.walmart.com/ip/46271127",
+          "type": "query"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "responseStatus",
+            "description": "<p>Response status of request.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "responseMessage",
+            "description": "<p>Response Message of request.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "productTitle",
+            "description": "<p>Title of the product.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "manufacturer",
+            "description": "<p>Manufacturer of the product.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "countReview",
+            "description": "<p>Number of reviews.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "productRating",
+            "description": "<p>Rating of the product.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "walmartItemId",
+            "description": "<p>Item id of the product.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "sizeSelection",
+            "description": "<p>Selection of sizes, if available.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "soldAndShippedBy",
+            "description": "<p>Retailer selling and fulfilling the purchase.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "available",
+            "description": "<p>Indication of availability.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "oldPrice",
+            "description": "<p>Old price.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "price",
+            "description": "<p>Actual price.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "shippingInformation",
+            "description": "<p>Information to the shipping.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "productHighlights",
+            "description": "<p>List of highlights of the product.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "imageUrlList",
+            "description": "<p>List containing the urls to the product images.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "productDetails",
+            "description": "<p>List of product details e.g. size and best seller ranking.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "productDetails.name",
+            "description": "<p>Name of the product detail.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "productDetails.value",
+            "description": "<p>Value of the product detail.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response-example:",
+          "content": "    HTTP/1.1 200 OK\n{\n   \"responseStatus\": \"PRODUCT_FOUND_RESPONSE\",\n   \"responseMessage\": \"Product successfully found!\",\n    \"productTitle\": \"X Rocker X-Pro 300 Black Pedestal Gaming Chair Rocker with Built-in Speakers\",\n   \"manufacturer\": \"X Rocker\",\n    \"walmartItemId\": 554348865,\n   \"countReview\": 277,\n   \"productRating\": \"4.0 Stars\",\n   \"soldAndShippedBy\": \"Walmart\",\n   \"oldPrice\": 129.0,\n   \"price\": 108.0,\n   \"shippingInformation\": \"Delivery not available\",\n   \"productHighlights\": [\n       \"Dimensions: 27.36L x 22.44W x 19.69H in\",\n        \"Long-lasting plastic frame\",\n        \"Breathable black fabric\",\n        \"Swivel and rocker pedestal base\",\n       \"Bluetooth speakers and subwoofer\"\n   ],\n   \"imageUrlList\": [\n       \"https://i5.walmartimages.com/asr/e9a514cb-3a64-40ff-8ddf-2b39497160c3_1.aa839ceae3ab602481b8f536b44fb36f.jpeg\"\n   ],\n   \"productDetails\": [\n       {\n           \"name\": \"Brand\",\n           \"value\": \"X Rocker\"\n       },\n       {\n           \"name\": \"Age Group\",\n           \"value\": \"Adult Teen Child\"\n        },\n        {\n            \"name\": \"Features\",\n             \"value\": \"2 speakers for total immersion surround sound\\nPowerful subwoofer\\nBuilt-in Bluetooth\"\n        },\n       {\n            \"name\": \"Color\",\n           \"value\": \"Black\"\n       },\n       {\n           \"name\": \"Gender\",\n           \"value\": \"Unisex\"\n       },\n       {\n            \"name\": \"Model\",\n            \"value\": \"5150001\"\n        },\n        {\n           \"name\": \"Manufacturer Part Number\",\n           \"value\": \"5150001\"\n       },\n       {\n            \"name\": \"Type\",\n           \"value\": \"Video Game Chairs Gaming Desktops\"\n       },\n       {\n           \"name\": \"Assembled Product Dimensions (L x W x H)\",\n           \"value\": \"27.36 x 22.44 x 19.69 Inches\"\n       }\n   ],\n   \"available\": false\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response-400:",
+          "content": "HTTP/1.1 400 Bad Request\n{\n  \"logref\": \"error\",\n  \"message\": \"Required String parameter 'url' is not present\",\n  \"links\": []\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response-404:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"logref\": \"error\",\n  \"message\": \"could not find product with url: 'https://www.amazon.com/dummy'\",\n  \"links\": []\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response-406:",
+          "content": "HTTP/1.1 406 Not Acceptable\n{\n  \"logref\": \"error\",\n  \"message\": \"the url parameter is incorrect: 'htts://wwe.amazon.com/dummy'\",\n  \"links\": []\n}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "MissingParameter",
+            "description": "<p>Some required parameter are missing.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "ProductNotFound",
+            "description": "<p>The product for the requested url were not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "IncorrectUrl",
+            "description": "<p>The provided url were incorrect.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "./axesso_rest_doc.js",
+    "groupTitle": "Walmart"
   }
 ]
