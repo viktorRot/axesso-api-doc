@@ -543,4 +543,83 @@
  *
  */
  
+  /**
+ * @api {get} /wlm/walmart-search-by-keyword Search Products by Keyword
+ * @apiVersion 1.1.0
+ * @apiName SearchByKeyword
+ * @apiGroup Walmart
+ *
+ * @apiHeader Authorization API key required.
+ * @apiHeader Content-Type (application/json).
+ * @apiParam {String} keyword Search key (required).
+ * @apiParam {String} type Type of invocation. Possible values are "upc" or "text" (required).
+ * @apiParam {int} page Page, which will be returned (Pagination, required).
+ * @apiParam {String} sortBy Sort option. Possible values: "best_match" (default), "best_seller", "price_low", "price_high", "rating_high", "new" (optional).
+ * @apiParamExample {query} Input-Example
+ *    http://api-wlm.axesso.de/wlm/walmart-search-by-keyword?keyword=Playstation&page=1&type=text&sortBy=best_match
+ *
+ * @apiSuccess {String} responseStatus 	Response status of request.
+ * @apiSuccess {String} responseMessage  Response Message of request.
+ * @apiSuccess {String} sortBy Sort option.
+ * @apiSuccess {String} domainCode Walmart domain, which was used.
+ * @apiSuccess {String} keyword Search key.
+ * @apiSuccess {Int} numberOfProducts  Number of results.
+ * @apiSuccess {Array} foundProducts List of products found for the keyword.
+ *
+ * @apiSuccessExample Success-Response-example:
+ *     HTTP/1.1 200 OK
+ *	{
+ *    "responseStatus": "PRODUCT_FOUND_RESPONSE",
+ *    "responseMessage": "Product successfully found!",
+ *    "sortStrategy": "best_match",
+ *    "domainCode": "com",
+ *    "keyword": "Playstation",
+ *    "numberOfProducts": 20,
+ *    "foundProducts": [
+ *       "/ip/Sony-PlayStation-Classic-Console-Gray-3003868/659739661",
+ *		 "/ip/Sony-PlayStation-4-500GB-Slim-System-Black/406966077",
+ *       "/ip/Sony-PlayStation-4-Slim-1TB-Gaming-Console-Black-CUH-2115B/782841840",
+ *       "/ip/Sony-PlayStation-4-1TB-Slim-Gaming-Console/101507200",
+ *       "/ip/Sony-PlayStation-Slim-1TB-Fortnite-Neo-Versa-PS4-Bundle/262620661",
+ *       "/ip/Sony-PlayStation-4-Slim-1TB-Spiderman-Bundle-Black-CUH-2215B/579371947",
+ *       "/ip/Sony-PlayStation-4-Pro-1TB-Gaming-Console-Wireless-Game-Pad-Black/741505081",
+ *       "/ip/Sony-PlayStation-4-Slim-500GB-Gaming-Console-Black-CUH-2115A/536117094",
+ *       "/ip/Sony-PlayStation-Plus-3-Month-Subscription-email-delivery/278949616",
+ *       "/ip/Sony-PlayStation-4-Pro-1TB-Gaming-Console-Black-CUH-7115/562745471",
+ *       "/ip/Sony-PlayStation-4-Slim-500GB-Uncharted-4-Bundle-Black-3001504/52901918",
+ *       "/ip/Sony-PlayStation-4-1TB-Slim-System-w-Call-of-Duty-Black-Ops-4-3003223/838048611",
+ *       "/ip/Sony-PlayStation-4-1TB-Call-of-Duty-WWII-Limited-Edition-Bundle-3002200/423189432",
+ *       "/ip/Sony-PlayStation-Red-Dead-Redemption-2-PS4-Pro-Bundle/278701606",
+ *       "/ip/PlayStation-4-Console-1TB-Slim-Edition/283047110",
+ *       "/ip/PlayStation-4-Pro-1TB-Gaming-Console-Black-3001510/52901919",
+ *       "/ip/Sony-PlayStation-4-Slim-500GB-Call-of-Duty-Infinite-Warfare-Bundle-Black/55332685",
+ *       "/ip/Madden-NFL-20-Electronic-Arts-PlayStation-4-014633738377/844718333",
+ *       "/ip/50-PlayStation-Store-Gift-Card-Sony-Physically-Shipped-Card/41488457",
+ *       "/ip/Sony-PlayStation-4-1TB-Slim-Days-of-Play-Limited-Edition-Blue-3003131/829692281"
+ * 		]
+ *	}
+ *
+ *
+ * @apiErrorExample Error-Response-400:
+ *     HTTP/1.1 400 Bad Request
+ *     {
+ *       "logref": "error",
+ *       "message": "Required String parameter 'keyword' is not present",
+ *       "links": []
+ *     }
+ *
+ * @apiError MissingParameter Some required parameter are missing.
+ * @apiError ProductNotFound The product for the requested parameters could not be found.
+ *
+ * @apiErrorExample Error-Response-404:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "logref": "error",
+ *       "message": "could not find product for parametes keyword: Playstatasdion |  sortBy: best_match,
+ *       "links": []
+ *     }
+ *
+ *
+ */
+ 
  
