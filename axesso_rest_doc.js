@@ -1,6 +1,6 @@
 
 /**
- * @api {get} /amz/amazon-lookup-product Request Product Information
+ * @api {get} prd.axesso.de/amz/amazon-lookup-product Request Product Information
  * @apiVersion 1.2.0
  * @apiName GetProductInformation
  * @apiGroup Amazon
@@ -121,7 +121,7 @@
 
 
  /**
- * @api {get} /amz/amazon-lookup-buy-recommendations Request Recommendations
+ * @api {get} prd.axesso.de/amz/amazon-lookup-buy-recommendations Request Recommendations
  * @apiVersion 1.1.0
  * @apiName GetBuyRecommendations
  * @apiGroup Amazon
@@ -188,7 +188,7 @@
  */
  
  /**
- * @api {get} /amz/amazon-search-by-keyword Search Products by Keyword
+ * @api {get} prd.axesso.de/amz/amazon-search-by-keyword Search Products by Keyword
  * @apiVersion 1.1.0
  * @apiName SearchByKeyword
  * @apiGroup Amazon
@@ -259,7 +259,7 @@
  
  
  /**
- * @api {get} /amz/amazon-lookup-prices Request all Seller Prices
+ * @api {get} prd.axesso.de/amz/amazon-lookup-prices Request all Seller Prices
  * @apiVersion 1.1.0
  * @apiName LookupPrices
  * @apiGroup Amazon
@@ -362,7 +362,7 @@
  
  
  /**
- * @api {get} /amz/sort-options Request Sort Options
+ * @api {get} prd.axesso.de/amz/sort-options Request Sort Options
  * @apiVersion 1.1.0
  * @apiName SortOptions
  * @apiGroup Amazon
@@ -415,7 +415,7 @@
  
  
  /**
- * @api {get} /wlm/walmart-lookup-product Request Product Information
+ * @api {get} wlm.axesso.de/wlm/walmart-lookup-product Request Product Information
  * @apiVersion 1.0.0
  * @apiName GetProductInformation
  * @apiGroup Walmart
@@ -544,7 +544,7 @@
  */
  
   /**
- * @api {get} /wlm/walmart-search-by-keyword Search Products by Keyword
+ * @api {get} wlm.axesso.de/wlm/walmart-search-by-keyword Search Products by Keyword
  * @apiVersion 1.1.0
  * @apiName SearchByKeyword
  * @apiGroup Walmart
@@ -596,6 +596,72 @@
  *       "/ip/Madden-NFL-20-Electronic-Arts-PlayStation-4-014633738377/844718333",
  *       "/ip/50-PlayStation-Store-Gift-Card-Sony-Physically-Shipped-Card/41488457",
  *       "/ip/Sony-PlayStation-4-1TB-Slim-Days-of-Play-Limited-Edition-Blue-3003131/829692281"
+ * 		]
+ *	}
+ *
+ *
+ * @apiErrorExample Error-Response-400:
+ *     HTTP/1.1 400 Bad Request
+ *     {
+ *       "logref": "error",
+ *       "message": "Required String parameter 'keyword' is not present",
+ *       "links": []
+ *     }
+ *
+ * @apiError MissingParameter Some required parameter are missing.
+ * @apiError ProductNotFound The product for the requested parameters could not be found.
+ *
+ * @apiErrorExample Error-Response-404:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "logref": "error",
+ *       "message": "could not find product for parametes keyword: Playstatasdion |  sortBy: best_match,
+ *       "links": []
+ *     }
+ *
+ *
+ */
+ 
+  /**
+ * @api {get} alb.axesso.de/alb/alibaba-search-by-keyword Search Products by Keyword
+ * @apiVersion 1.1.0
+ * @apiName SearchByKeyword
+ * @apiGroup Alibaba
+ *
+ * @apiHeader Authorization API key required.
+ * @apiHeader Content-Type (application/json).
+ * @apiParam {String} keyword Search key (required).
+ * @apiParam {String} type Type of invocation. Possible values are "upc" or "text" (required).
+ * @apiParam {int} page Page, which will be returned (Pagination, required).
+ * @apiParam {String} sortBy Sort option. Possible values: "best_match" (default), "transaction_level", "response_rate" (optional).
+ * @apiParamExample {query} Input-Example
+ *    http://api-alb.axesso.de/alb/alibaba-search-by-keyword?keyword=Playstation 4&page=1&type=text&sortBy=best_match
+ *
+ * @apiSuccess {String} responseStatus 	Response status of request.
+ * @apiSuccess {String} responseMessage  Response Message of request.
+ * @apiSuccess {String} sortBy Sort option.
+ * @apiSuccess {String} domainCode Walmart domain, which was used.
+ * @apiSuccess {String} keyword Search key.
+ * @apiSuccess {Int} numberOfProducts  Number of results.
+ * @apiSuccess {Array} foundProducts List of products found for the keyword.
+ *
+ * @apiSuccessExample Success-Response-example:
+ *     HTTP/1.1 200 OK
+ *	{
+ *    "responseStatus": "PRODUCT_FOUND_RESPONSE",
+ *    "responseMessage": "Product successfully found!",
+ *    "sortStrategy": "best_match",
+ *    "domainCode": "com",
+ *    "keyword": "Playstation 4",
+ *    "numberOfProducts": 20,
+ *    "foundProducts": [
+ *       "//www.alibaba.com/product-detail/Vertical-Stand-Cooling-fan-For-Playstation_60696308743.html",
+ *       "//www.alibaba.com/product-detail/High-Quality-Wireless-Controller-V4-0_62283552682.html",
+ *       "//www.alibaba.com/product-detail/Spiderman-For-PS4-Vinyl-Skin-For_62214111002.html",
+ *       "//www.alibaba.com/product-detail/TOP-BOTTOM-CASE-For-PLAYSTATION-4_60821222376.html",
+ *       "//www.alibaba.com/product-detail/Wireless-Game-Controller-For-Ps4-Controller_62359603665.html",
+ *       "//www.alibaba.com/product-detail/Accessories-Smart-Phone-Clip-Clamp-Stand_62151739655.html",
+ *       "//www.alibaba.com/product-detail/PS4-Controller-Charger-Charging-Station-Dual_62119125798.html",
  * 		]
  *	}
  *

@@ -1,7 +1,168 @@
 define({ "api": [
   {
     "type": "get",
-    "url": "/amz/amazon-lookup-buy-recommendations",
+    "url": "alb.axesso.de/alb/alibaba-search-by-keyword",
+    "title": "Search Products by Keyword",
+    "version": "1.1.0",
+    "name": "SearchByKeyword",
+    "group": "Alibaba",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>API key required.</p>"
+          },
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>(application/json).</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "keyword",
+            "description": "<p>Search key (required).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<p>Type of invocation. Possible values are &quot;upc&quot; or &quot;text&quot; (required).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int",
+            "optional": false,
+            "field": "page",
+            "description": "<p>Page, which will be returned (Pagination, required).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "sortBy",
+            "description": "<p>Sort option. Possible values: &quot;best_match&quot; (default), &quot;transaction_level&quot;, &quot;response_rate&quot; (optional).</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Input-Example",
+          "content": "http://api-alb.axesso.de/alb/alibaba-search-by-keyword?keyword=Playstation 4&page=1&type=text&sortBy=best_match",
+          "type": "query"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "responseStatus",
+            "description": "<p>Response status of request.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "responseMessage",
+            "description": "<p>Response Message of request.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "sortBy",
+            "description": "<p>Sort option.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "domainCode",
+            "description": "<p>Walmart domain, which was used.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "keyword",
+            "description": "<p>Search key.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "numberOfProducts",
+            "description": "<p>Number of results.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "foundProducts",
+            "description": "<p>List of products found for the keyword.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response-example:",
+          "content": "    HTTP/1.1 200 OK\n\t{\n   \"responseStatus\": \"PRODUCT_FOUND_RESPONSE\",\n   \"responseMessage\": \"Product successfully found!\",\n   \"sortStrategy\": \"best_match\",\n   \"domainCode\": \"com\",\n   \"keyword\": \"Playstation 4\",\n   \"numberOfProducts\": 20,\n   \"foundProducts\": [\n      \"//www.alibaba.com/product-detail/Vertical-Stand-Cooling-fan-For-Playstation_60696308743.html\",\n      \"//www.alibaba.com/product-detail/High-Quality-Wireless-Controller-V4-0_62283552682.html\",\n      \"//www.alibaba.com/product-detail/Spiderman-For-PS4-Vinyl-Skin-For_62214111002.html\",\n      \"//www.alibaba.com/product-detail/TOP-BOTTOM-CASE-For-PLAYSTATION-4_60821222376.html\",\n      \"//www.alibaba.com/product-detail/Wireless-Game-Controller-For-Ps4-Controller_62359603665.html\",\n      \"//www.alibaba.com/product-detail/Accessories-Smart-Phone-Clip-Clamp-Stand_62151739655.html\",\n      \"//www.alibaba.com/product-detail/PS4-Controller-Charger-Charging-Station-Dual_62119125798.html\",\n\t\t]\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response-400:",
+          "content": "HTTP/1.1 400 Bad Request\n{\n  \"logref\": \"error\",\n  \"message\": \"Required String parameter 'keyword' is not present\",\n  \"links\": []\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response-404:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"logref\": \"error\",\n  \"message\": \"could not find product for parametes keyword: Playstatasdion |  sortBy: best_match,\n  \"links\": []\n}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "MissingParameter",
+            "description": "<p>Some required parameter are missing.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "ProductNotFound",
+            "description": "<p>The product for the requested parameters could not be found.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "./axesso_rest_doc.js",
+    "groupTitle": "Alibaba"
+  },
+  {
+    "type": "get",
+    "url": "prd.axesso.de/amz/amazon-lookup-buy-recommendations",
     "title": "Request Recommendations",
     "version": "1.1.0",
     "name": "GetBuyRecommendations",
@@ -131,7 +292,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/amz/amazon-lookup-product",
+    "url": "prd.axesso.de/amz/amazon-lookup-product",
     "title": "Request Product Information",
     "version": "1.2.0",
     "name": "GetProductInformation",
@@ -436,7 +597,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/amz/amazon-lookup-prices",
+    "url": "prd.axesso.de/amz/amazon-lookup-prices",
     "title": "Request all Seller Prices",
     "version": "1.1.0",
     "name": "LookupPrices",
@@ -681,7 +842,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/amz/amazon-search-by-keyword",
+    "url": "prd.axesso.de/amz/amazon-search-by-keyword",
     "title": "Search Products by Keyword",
     "version": "1.1.0",
     "name": "SearchByKeyword",
@@ -849,7 +1010,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/amz/sort-options",
+    "url": "prd.axesso.de/amz/sort-options",
     "title": "Request Sort Options",
     "version": "1.1.0",
     "name": "SortOptions",
@@ -955,7 +1116,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/wlm/walmart-lookup-product",
+    "url": "wlm.axesso.de/wlm/walmart-lookup-product",
     "title": "Request Product Information",
     "version": "1.0.0",
     "name": "GetProductInformation",
@@ -1183,7 +1344,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/wlm/walmart-search-by-keyword",
+    "url": "wlm.axesso.de/wlm/walmart-search-by-keyword",
     "title": "Search Products by Keyword",
     "version": "1.1.0",
     "name": "SearchByKeyword",
