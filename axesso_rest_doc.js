@@ -34,7 +34,7 @@
  * @apiSuccess {String} productDescription Description of the product.
  * @apiSuccess {Object[]} productDetails  List of product details e.g. size and best seller ranking.
  * @apiSuccess {String} productDetails.name  Name of the product detail.
- * @apiSuccess {Array} productDetails.value  Value of the product detail.
+ * @apiSuccess {String} productDetails.value  Value of the product detail.
  * @apiSuccess {Boolean} addon Indication for addon products.
  * @apiSuccess {Boolean} pantry Indication for pantry products.
  * @apiSuccess {String} minimalQuantity Minimum quantity to purchase.
@@ -640,7 +640,7 @@
  * @apiSuccess {String} responseStatus 	Response status of request.
  * @apiSuccess {String} responseMessage  Response Message of request.
  * @apiSuccess {String} sortBy Sort option.
- * @apiSuccess {String} domainCode Walmart domain, which was used.
+ * @apiSuccess {String} domainCode Domain of the Alibaba site.
  * @apiSuccess {String} keyword Search key.
  * @apiSuccess {Int} numberOfProducts  Number of results.
  * @apiSuccess {Array} foundProducts List of products found for the keyword.
@@ -688,4 +688,99 @@
  *
  */
  
+  /**
+ * @api {get} alb.axesso.de/alb/alibaba-lookup-product Request Product Information
+ * @apiVersion 1.1.0
+ * @apiName GetProductInformation
+ * @apiGroup Alibaba
+ *
+ * @apiHeader Authorization API key required.
+ * @apiHeader Content-Type (application/json).
+ * @apiParam {String} URL URL for product page (required).
+ * @apiParamExample {query} Input-Example
+ *    http://api-alb.axesso.de/alb/alibaba-lookup-product?url=https://www.alibaba.com/product-detail/USB-PXN-0082-Arcade-Joystick-Wired_60612038161.html?spm=a2700.details.deiletai6.29.58cc55e3i5R8ml
+ *
+ * @apiSuccess {String} responseStatus 	Response status of request.
+ * @apiSuccess {String} responseMessage  Response Message of request.
+ * @apiSuccess {String} productTitle Title of the product.
+ * @apiSuccess {Array} imageUrlList List containing the urls to the product images.
+ * @apiSuccess {Int} buyersCount Number of buyers.
+ * @apiSuccess {Array} colors List of color variations.
+ * @apiSuccess {Array} sizes List of size variations.
+ * @apiSuccess {Object[]} prices List of price details.
+ * @apiSuccess {String} prices.piecesRange  Range of pieces.
+ * @apiSuccess {String} prices.price Actual price of the pieces.
+ * @apiSuccess {Number} samplePrice Actual price of sample.
+ * @apiSuccess {String} manufacturer Title of the product.
+ * @apiSuccess {Object[]} reviews List of reviews details.
+ * @apiSuccess {String} reviews.text Content text of review.
+ * @apiSuccess {String} reviews.date Date of review.
+ * @apiSuccess {Int} reviews.rating Rating of review.
+ * @apiSuccess {String} reviews.country Country of reviewer.
+ *
+ * @apiSuccessExample Success-Response-example:
+ *     HTTP/1.1 200 OK
+ *{
+ *   "responseStatus": "PRODUCT_FOUND_RESPONSE",
+ *   "responseMessage": "Product successfully found!",
+ *   "productTitle": "USB PXN-0082 Arcade Joystick Wired Arcade Gaming Controller for Nintendo Switch PC Flight Games Joystick",
+ *   "imageUrlList": [
+ *       "//sc02.alicdn.com/kf/U082481c3a9234aae900ae945bb6efe99v/USB-PXN-0082-Arcade-Joystick-Wired-Arcade.jpg",
+ *       "//sc01.alicdn.com/kf/HTB1SRiYjOCYBuNkSnaVq6AMsVXaK/USB-PXN-0082-Arcade-Joystick-Wired-Arcade.jpg"
+ *   ],
+ *   "buyersCount": 4,
+ *   "colors": [],
+ *   "sizes": [],
+ *   "prices": [
+ *       {
+ *           "piecesRange": "2-9 Pieces",
+ *           "price": "$19.99"
+ *       },
+ *       {
+ *           "piecesRange": ">=50 Pieces",
+ *           "price": "$16.66"
+ *       }
+ *   ],
+ *   "samplePrice": 19.99,
+ *   "manufacturer": "Shenzhen Mystyle Import & Export Co., Ltd.",
+ *   "reviews": [
+ *       {
+ *           "text": "Great, thank you so much.",
+ *           "date": "21 Oct 2019",
+  *          "rating": 5,
+ *           "country": "Japan"
+ *       }
+ *   ]
+ *}
+ *
+ * @apiErrorExample Error-Response-400:
+ *     HTTP/1.1 400 Bad Request
+ *     {
+ *       "logref": "error",
+ *       "message": "Required String parameter 'url' is not present",
+ *       "links": []
+ *     }
+ *
+ * @apiError MissingParameter Some required parameter are missing.
+ * @apiError ProductNotFound The product for the requested parameters could not be found.
+ *
+ * @apiErrorExample Error-Response-404:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "logref": "error",
+ *       "message": "could not find product for parameter: 'https://www.alibaba.com/product-detail/Factory-direct-tpu-cell-phone-case_62012846556.html'",
+ *       "links": []
+ *     }
+ *
+ * @apiError IncorrectUrl The provided url were incorrect.
+ *
+ * @apiErrorExample Error-Response-406:
+ *     HTTP/1.1 406 Not Acceptable
+ *     {
+ *       "logref": "error",
+ *       "message": "the url parameter is incorrect: 'ttps://www.alibaba.com/product-detail/USB-PXN-0082-Arcade-Joystick-Wired_60612038161.html?spm=a2700.details.deiletai6.29.58cc55e3i5R8ml'",
+ *       "links": []
+ *     }
+ *
+ */
  

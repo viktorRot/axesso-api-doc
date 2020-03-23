@@ -1,6 +1,227 @@
 define({ "api": [
   {
     "type": "get",
+    "url": "alb.axesso.de/alb/alibaba-lookup-product",
+    "title": "Request Product Information",
+    "version": "1.1.0",
+    "name": "GetProductInformation",
+    "group": "Alibaba",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>API key required.</p>"
+          },
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>(application/json).</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "URL",
+            "description": "<p>URL for product page (required).</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Input-Example",
+          "content": "http://api-alb.axesso.de/alb/alibaba-lookup-product?url=https://www.alibaba.com/product-detail/USB-PXN-0082-Arcade-Joystick-Wired_60612038161.html?spm=a2700.details.deiletai6.29.58cc55e3i5R8ml",
+          "type": "query"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "responseStatus",
+            "description": "<p>Response status of request.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "responseMessage",
+            "description": "<p>Response Message of request.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "productTitle",
+            "description": "<p>Title of the product.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "imageUrlList",
+            "description": "<p>List containing the urls to the product images.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "buyersCount",
+            "description": "<p>Number of buyers.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "colors",
+            "description": "<p>List of color variations.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "sizes",
+            "description": "<p>List of size variations.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "prices",
+            "description": "<p>List of price details.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "prices.piecesRange",
+            "description": "<p>Range of pieces.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "prices.price",
+            "description": "<p>Actual price of the pieces.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "samplePrice",
+            "description": "<p>Actual price of sample.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "manufacturer",
+            "description": "<p>Title of the product.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "reviews",
+            "description": "<p>List of reviews details.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.text",
+            "description": "<p>Content text of review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.date",
+            "description": "<p>Date of review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "reviews.rating",
+            "description": "<p>Rating of review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.country",
+            "description": "<p>Country of reviewer.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response-example:",
+          "content": "    HTTP/1.1 200 OK\n{\n  \"responseStatus\": \"PRODUCT_FOUND_RESPONSE\",\n  \"responseMessage\": \"Product successfully found!\",\n  \"productTitle\": \"USB PXN-0082 Arcade Joystick Wired Arcade Gaming Controller for Nintendo Switch PC Flight Games Joystick\",\n  \"imageUrlList\": [\n      \"//sc02.alicdn.com/kf/U082481c3a9234aae900ae945bb6efe99v/USB-PXN-0082-Arcade-Joystick-Wired-Arcade.jpg\",\n      \"//sc01.alicdn.com/kf/HTB1SRiYjOCYBuNkSnaVq6AMsVXaK/USB-PXN-0082-Arcade-Joystick-Wired-Arcade.jpg\"\n  ],\n  \"buyersCount\": 4,\n  \"colors\": [],\n  \"sizes\": [],\n  \"prices\": [\n      {\n          \"piecesRange\": \"2-9 Pieces\",\n          \"price\": \"$19.99\"\n      },\n      {\n          \"piecesRange\": \">=50 Pieces\",\n          \"price\": \"$16.66\"\n      }\n  ],\n  \"samplePrice\": 19.99,\n  \"manufacturer\": \"Shenzhen Mystyle Import & Export Co., Ltd.\",\n  \"reviews\": [\n      {\n          \"text\": \"Great, thank you so much.\",\n          \"date\": \"21 Oct 2019\",\n         \"rating\": 5,\n          \"country\": \"Japan\"\n      }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response-400:",
+          "content": "HTTP/1.1 400 Bad Request\n{\n  \"logref\": \"error\",\n  \"message\": \"Required String parameter 'url' is not present\",\n  \"links\": []\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response-404:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"logref\": \"error\",\n  \"message\": \"could not find product for parameter: 'https://www.alibaba.com/product-detail/Factory-direct-tpu-cell-phone-case_62012846556.html'\",\n  \"links\": []\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response-406:",
+          "content": "HTTP/1.1 406 Not Acceptable\n{\n  \"logref\": \"error\",\n  \"message\": \"the url parameter is incorrect: 'ttps://www.alibaba.com/product-detail/USB-PXN-0082-Arcade-Joystick-Wired_60612038161.html?spm=a2700.details.deiletai6.29.58cc55e3i5R8ml'\",\n  \"links\": []\n}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "MissingParameter",
+            "description": "<p>Some required parameter are missing.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "ProductNotFound",
+            "description": "<p>The product for the requested parameters could not be found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "IncorrectUrl",
+            "description": "<p>The provided url were incorrect.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "./axesso_rest_doc.js",
+    "groupTitle": "Alibaba"
+  },
+  {
+    "type": "get",
     "url": "alb.axesso.de/alb/alibaba-search-by-keyword",
     "title": "Search Products by Keyword",
     "version": "1.1.0",
@@ -94,7 +315,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "domainCode",
-            "description": "<p>Walmart domain, which was used.</p>"
+            "description": "<p>Domain of the Alibaba site.</p>"
           },
           {
             "group": "Success 200",
@@ -501,7 +722,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "Array",
+            "type": "String",
             "optional": false,
             "field": "productDetails.value",
             "description": "<p>Value of the product detail.</p>"
