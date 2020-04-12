@@ -32,14 +32,33 @@
  * @apiSuccess {Boolean} prime Indication for prime products.
  * @apiSuccess {Array} imageUrlList List containing the urls to the product images.
  * @apiSuccess {String} productDescription Description of the product.
- * @apiSuccess {Object[]} productDetails  List of product details e.g. size and best seller ranking.
- * @apiSuccess {String} productDetails.name  Name of the product detail.
- * @apiSuccess {String} productDetails.value  Value of the product detail.
+ * @apiSuccess {Object[]} productDetails List of product details e.g. size and best seller ranking.
+ * @apiSuccess {String} productDetails.name Name of the product detail.
+ * @apiSuccess {String} productDetails.value Value of the product detail.
  * @apiSuccess {Boolean} addon Indication for addon products.
  * @apiSuccess {Boolean} pantry Indication for pantry products.
  * @apiSuccess {String} minimalQuantity Minimum quantity to purchase.
  * @apiSuccess {Number} dealPrice Price if product is a deal.
  * @apiSuccess {Number} salePrice Price if product is on sale.
+ * @apiSuccess {Object[]} reviews List including reviews with details.
+ * @apiSuccess {String} reviews.text Content of the review.
+ * @apiSuccess {String} reviews.date Date of review creation.
+ * @apiSuccess {String} reviews.rating Review rating.
+ * @apiSuccess {String} reviews.title Titel of review.
+ * @apiSuccess {String} reviews.userName User who wrote the review.
+ * @apiSuccess {String} reviews.url URL of review.
+ * @apiSuccess {Object[]} variations List of different product variations.
+ * @apiSuccess {String} variations.variationName Name of the variation.
+ * @apiSuccess {Object[]} variations.values Details of the variation.
+ * @apiSuccess {String} variations.values.value Name of the variation product.
+ * @apiSuccess {String} variations.values.dpUrl URL of product.
+ * @apiSuccess {Boolean} variations.values.selected Indication if product is selected.
+ * @apiSuccess {Boolean} variations.values.available Indication of availability of variation product.
+ * @apiSuccess {String[]} categories List of categories where the product is included.
+ * @apiSuccess {Object} currency Currency of price.
+ * @apiSuccess {String} currency.code Code of currency.
+ * @apiSuccess {String} currency.symbol Symbol of currency.
+ * @apiSuccess {String} acKeywordLink Amazon choice keyword link.
  *
  * @apiSuccessExample Success-Response-example:
  *     HTTP/1.1 200 OK
@@ -67,7 +86,7 @@
  *       "https://images-na.ssl-images-amazon.com/images/I/71itkDwgyyL._SL1500_.jpg",
  *       "https://images-na.ssl-images-amazon.com/images/I/716b2w17%2BPL._SL1500_.jpg"
  *   ],
- *    "productDescription": "Timberland White Ledge Mid Waterproof aus hochwertigem wasserfestem Vollnarbenleder für Schutz, lange Haltbarkeit und trockene Füße. Herausnehmbares EVA Fußbett für Dämpfung und Komfort. Waterproof Seam Sealed Construction für trockene Füße bei jedem Wetter. B.S.F.P Motion Efficiency System für beste Traktion auf jedem Untergrund. Abriebfeste Gummiaußensohle.",
+ *    "productDescription": "PS4 Pro 4K TV GAMING & MORE The most advanced PlayStation system ever. PS4 Pro is designed to take your favorite PS4 games and add to them with more power for graphics",
  *    "productDetails": [
  *		{
  *           "name": "Item Weight",
@@ -77,12 +96,50 @@
  *           "name": "Amazon Bestsellers Rank",
  *           "value": "392,852 in Home & Kitchen (See Top 100 in Home & Kitchen) #336 in Dinner Sets"
  *       }
- *	  "prime": false
- *	  "addon": false
- *	  "pantry": false
- *	  "minimalQuantity": null
- *	  "dealPrice": 71.42
- *	  "salePrice": 0.0
+ *	  "prime": false,
+ *	  "addon": false,
+ *	  "pantry": false,
+ *	  "minimalQuantity": null,
+ *	  "dealPrice": 71.42,
+ *	  "salePrice": 0.0,
+ * 	  "reviews": [
+ *       {
+ *           "text": "Purchased New, received Used, already registered to another owner, with a game disc in the tray.",
+ *           "date": "Reviewed in the United States on September 11, 2018",
+ *           "rating": "1.0 out of 5 stars",
+ *           "title": "Used Goods.",
+ *           "userName": "John Redman",
+ *           "url": "/gp/customer-reviews/RDHY3HUVO55FH/ref=cm_cr_dp_d_rvw_ttl?ie=UTF8&ASIN=B01LOP8EZC"
+ *       }
+ *	],
+ *	  "variations": [
+ *       {
+ *           "variationName": "variation_edition",
+ *           "values": [
+ *               {
+ *                   "value": "Pro 1TB $356.99",
+ *                   "dpUrl": "",
+ *                   "selected": true,
+ *                   "available": true
+ *              },
+ *              {
+ *                   "value": "Slim 1TB used from $279.99",
+ *                   "dpUrl": "/dp/B071CV8CG2/ref=twister_B07PZ8NZSZ?_encoding=UTF8&psc=1",
+ *                   "selected": false,
+ *                   "available": true
+ *              }
+ *		}
+ *	 ],
+ * "categories": [
+ *       "Video Games",
+ *       "PlayStation 4",
+ *      "Consoles"
+ *  ],
+ *   "currency": {
+ *       "code": "USD",
+ *       "symbol": "$"
+ *   },
+ *   "acKeywordLink": "ps4 pro"
  *	}
  *
  *
@@ -117,7 +174,6 @@
  *
  *
  */
- 
 
 
  /**
@@ -188,7 +244,7 @@
  */
  
  /**
- * @api {get} prd.axesso.de/amz/amazon-search-by-keyword Search Products by Keyword
+ * @api {get} prd.axesso.de/amz/amazon-search-by-keyword-asin Search Products by Keyword
  * @apiVersion 1.1.0
  * @apiName SearchByKeyword
  * @apiGroup Amazon
@@ -200,7 +256,7 @@
  * @apiParam {String} sortBy Sort option. Possible values: "relevanceblender" (default), "price-asc-rank", "price-desc-rank", "review-rank", "date-desc-rank" (optional).
  * @apiParam {int} page Page, which will be returned (Pagination, required).
  * @apiParamExample {query} Input-Example
- *    http://api-prd.axesso.de/amz/amazon-search-by-keyword?keyword=Playstation4&domainCode=com&sortBy=date-desc-rank&page=5
+ *    http://api-prd.axesso.de/amz/amazon-search-by-keyword-asin?keyword=Playstation4&domainCode=com&sortBy=date-desc-rank&page=5
  *
  * @apiSuccess {String} responseStatus 	Response status of request.
  * @apiSuccess {String} responseMessage  Response Message of request.
@@ -209,7 +265,11 @@
  * @apiSuccess {String} keyword Search key.
  * @apiSuccess {Int} numberOfProducts  Number of results.
  * @apiSuccess {Array} foundProducts List of products found for the keyword.
- * @apiSuccess {Object[]} foundProductDetails List of product details (/amz/amazon-lookup-product)
+ * @apiSuccess {Object[]} searchProductDetails List of product details of the found product.
+ * @apiSuccess {String} searchProductDetails.productDescription Description of product.
+ * @apiSuccess {String} searchProductDetails.asin Asin of product.
+  * @apiSuccess {Int} searchProductDetails.countReview Number of reviews.
+ * @apiSuccess {String} searchProductDetails.imgUrl Url of the displayed image.
  *
  * @apiSuccessExample Success-Response-example:
  *     HTTP/1.1 200 OK
@@ -231,9 +291,34 @@
  *       "B07JHY99XV",
  *       "B07KJXNYK9",
  *       "B07KGJPBKY"
+ *	],
+ *  "searchProductDetails": [
+ *      {
+ *            "productDescription": "JETech Case for Apple iPhone 8 and iPhone 7, 4.7-Inch, Shock-Absorption Bumper Cover, Anti-Scratch Clear Back, HD Clear",
+ *            "asin": "B07KY8VKGK",
+ *            "countReview": 24079,
+ *            "imgUrl": "https://m.media-amazon.com/images/I/71sHaPpboUL._AC_UL320_ML3_.jpg"
+ *        },
+ *        {
+ *            "productDescription": "OtterBox Commuter Series Case for iPhone 8 & iPhone 7 (NOT Plus) - Frustration Free Packaging - BLACK",
+ *            "asin": "B07BQFYHKG",
+ *            "countReview": 13652,
+ *            "imgUrl": "https://m.media-amazon.com/images/I/91bgVqK+-sL._AC_UL320_ML3_.jpg"
+ *        },
+ *        {
+ *            "productDescription": "iPhone 8 Case Liquid Silicone, iPhone 7 Silicone Case Miracase Gel Rubber Full Body Protection Shockproof Cover Case Drop Protection for Apple iPhone 7/ iPhone 8(4.7\") (Clove Purple)",
+ *            "asin": "B07KVP1C4N",
+ *            "countReview": 2523,
+ *            "imgUrl": "https://m.media-amazon.com/images/I/61JbPNGWyFL._AC_UL320_ML3_.jpg"
+ *        },
+ *        {
+ *            "productDescription": "Smartish iPhone 11 Pro Armor Case - Gripzilla [Rugged + Protective] Slim Tough Grip Cover - Black Tie Affair",
+ *            "asin": "B07KPQRRFY",
+ *            "countReview": 427,
+ *           "imgUrl": "https://m.media-amazon.com/images/I/71stlFO+faL._AC_UL320_ML3_.jpg"
+ *        }
+ *		]
  *	}
- *	  "foundProductDetails" : []
- *
  *
  * @apiErrorExample Error-Response-400:
  *     HTTP/1.1 400 Bad Request

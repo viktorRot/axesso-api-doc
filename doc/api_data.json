@@ -761,13 +761,146 @@
             "optional": false,
             "field": "salePrice",
             "description": "<p>Price if product is on sale.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "reviews",
+            "description": "<p>List including reviews with details.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.text",
+            "description": "<p>Content of the review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.date",
+            "description": "<p>Date of review creation.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.rating",
+            "description": "<p>Review rating.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.title",
+            "description": "<p>Titel of review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.userName",
+            "description": "<p>User who wrote the review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.url",
+            "description": "<p>URL of review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "variations",
+            "description": "<p>List of different product variations.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "variations.variationName",
+            "description": "<p>Name of the variation.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "variations.values",
+            "description": "<p>Details of the variation.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "variations.values.value",
+            "description": "<p>Name of the variation product.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "variations.values.dpUrl",
+            "description": "<p>URL of product.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "variations.values.selected",
+            "description": "<p>Indication if product is selected.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "variations.values.available",
+            "description": "<p>Indication of availability of variation product.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "categories",
+            "description": "<p>List of categories where the product is included.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "currency",
+            "description": "<p>Currency of price.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "currency.code",
+            "description": "<p>Code of currency.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "currency.symbol",
+            "description": "<p>Symbol of currency.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "acKeywordLink",
+            "description": "<p>Amazon choice keyword link.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response-example:",
-          "content": "    HTTP/1.1 200 OK\n\t{\n   \"responseStatus\": \"PRODUCT_FOUND_RESPONSE\",\n   \"responseMessage\": \"Product successfully found!\",\n   \"productTitle\": \"Product Title description\",\n   \"manufacturer\": \"Sony\",\n   \"countReview\": 19,\n   \"answeredQuestions\": 4,\n   \"productRating\": \"4.4 out of 5 stars\",\n   \"asin\": \"B002YOS9NU\",\n   \"sizeSelection\": []\n   \"soldBy\": \"Sony\",\n   \"fulfilledBy\": \"Amazon\",\n   \"warehouseAvailability\": \"In Stock.\",\n   \"retailPrice\": 137.55,\n   \"price\": 77.42,\n   \"priceShippingInformation\": \"free\",\n   \"priceSaving\": \"You Save: $59,58 (43%)\",\n   \"features\": [\n     \"Premium SOLID Stainless Steel\"\n   ],\n   \"imageUrlList\": [\n      \"https://images-na.ssl-images-amazon.com/images/I/71itkDwgyyL._SL1500_.jpg\",\n      \"https://images-na.ssl-images-amazon.com/images/I/716b2w17%2BPL._SL1500_.jpg\"\n  ],\n   \"productDescription\": \"Timberland White Ledge Mid Waterproof aus hochwertigem wasserfestem Vollnarbenleder für Schutz, lange Haltbarkeit und trockene Füße. Herausnehmbares EVA Fußbett für Dämpfung und Komfort. Waterproof Seam Sealed Construction für trockene Füße bei jedem Wetter. B.S.F.P Motion Efficiency System für beste Traktion auf jedem Untergrund. Abriebfeste Gummiaußensohle.\",\n   \"productDetails\": [\n\t\t{\n          \"name\": \"Item Weight\",\n          \"value\": \"2.46 Kg\"\n      },\n\t\t{\n          \"name\": \"Amazon Bestsellers Rank\",\n          \"value\": \"392,852 in Home & Kitchen (See Top 100 in Home & Kitchen) #336 in Dinner Sets\"\n      }\n\t  \"prime\": false\n\t  \"addon\": false\n\t  \"pantry\": false\n\t  \"minimalQuantity\": null\n\t  \"dealPrice\": 71.42\n\t  \"salePrice\": 0.0\n\t}",
+          "content": "    HTTP/1.1 200 OK\n\t{\n   \"responseStatus\": \"PRODUCT_FOUND_RESPONSE\",\n   \"responseMessage\": \"Product successfully found!\",\n   \"productTitle\": \"Product Title description\",\n   \"manufacturer\": \"Sony\",\n   \"countReview\": 19,\n   \"answeredQuestions\": 4,\n   \"productRating\": \"4.4 out of 5 stars\",\n   \"asin\": \"B002YOS9NU\",\n   \"sizeSelection\": []\n   \"soldBy\": \"Sony\",\n   \"fulfilledBy\": \"Amazon\",\n   \"warehouseAvailability\": \"In Stock.\",\n   \"retailPrice\": 137.55,\n   \"price\": 77.42,\n   \"priceShippingInformation\": \"free\",\n   \"priceSaving\": \"You Save: $59,58 (43%)\",\n   \"features\": [\n     \"Premium SOLID Stainless Steel\"\n   ],\n   \"imageUrlList\": [\n      \"https://images-na.ssl-images-amazon.com/images/I/71itkDwgyyL._SL1500_.jpg\",\n      \"https://images-na.ssl-images-amazon.com/images/I/716b2w17%2BPL._SL1500_.jpg\"\n  ],\n   \"productDescription\": \"PS4 Pro 4K TV GAMING & MORE The most advanced PlayStation system ever. PS4 Pro is designed to take your favorite PS4 games and add to them with more power for graphics\",\n   \"productDetails\": [\n\t\t{\n          \"name\": \"Item Weight\",\n          \"value\": \"2.46 Kg\"\n      },\n\t\t{\n          \"name\": \"Amazon Bestsellers Rank\",\n          \"value\": \"392,852 in Home & Kitchen (See Top 100 in Home & Kitchen) #336 in Dinner Sets\"\n      }\n\t  \"prime\": false,\n\t  \"addon\": false,\n\t  \"pantry\": false,\n\t  \"minimalQuantity\": null,\n\t  \"dealPrice\": 71.42,\n\t  \"salePrice\": 0.0,\n\t  \"reviews\": [\n      {\n          \"text\": \"Purchased New, received Used, already registered to another owner, with a game disc in the tray.\",\n          \"date\": \"Reviewed in the United States on September 11, 2018\",\n          \"rating\": \"1.0 out of 5 stars\",\n          \"title\": \"Used Goods.\",\n          \"userName\": \"John Redman\",\n          \"url\": \"/gp/customer-reviews/RDHY3HUVO55FH/ref=cm_cr_dp_d_rvw_ttl?ie=UTF8&ASIN=B01LOP8EZC\"\n      }\n\t],\n\t  \"variations\": [\n      {\n          \"variationName\": \"variation_edition\",\n          \"values\": [\n              {\n                  \"value\": \"Pro 1TB $356.99\",\n                  \"dpUrl\": \"\",\n                  \"selected\": true,\n                  \"available\": true\n             },\n             {\n                  \"value\": \"Slim 1TB used from $279.99\",\n                  \"dpUrl\": \"/dp/B071CV8CG2/ref=twister_B07PZ8NZSZ?_encoding=UTF8&psc=1\",\n                  \"selected\": false,\n                  \"available\": true\n             }\n\t\t}\n\t ],\n\"categories\": [\n      \"Video Games\",\n      \"PlayStation 4\",\n     \"Consoles\"\n ],\n  \"currency\": {\n      \"code\": \"USD\",\n      \"symbol\": \"$\"\n  },\n  \"acKeywordLink\": \"ps4 pro\"\n\t}",
           "type": "json"
         }
       ]
@@ -1063,7 +1196,7 @@
   },
   {
     "type": "get",
-    "url": "prd.axesso.de/amz/amazon-search-by-keyword",
+    "url": "prd.axesso.de/amz/amazon-search-by-keyword-asin",
     "title": "Search Products by Keyword",
     "version": "1.1.0",
     "name": "SearchByKeyword",
@@ -1122,7 +1255,7 @@
       "examples": [
         {
           "title": "Input-Example",
-          "content": "http://api-prd.axesso.de/amz/amazon-search-by-keyword?keyword=Playstation4&domainCode=com&sortBy=date-desc-rank&page=5",
+          "content": "http://api-prd.axesso.de/amz/amazon-search-by-keyword-asin?keyword=Playstation4&domainCode=com&sortBy=date-desc-rank&page=5",
           "type": "query"
         }
       ]
@@ -1183,15 +1316,43 @@
             "group": "Success 200",
             "type": "Object[]",
             "optional": false,
-            "field": "foundProductDetails",
-            "description": "<p>List of product details (/amz/amazon-lookup-product)</p>"
+            "field": "searchProductDetails",
+            "description": "<p>List of product details of the found product.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "searchProductDetails.productDescription",
+            "description": "<p>Description of product.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "searchProductDetails.asin",
+            "description": "<p>Asin of product.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "searchProductDetails.countReview",
+            "description": "<p>Number of reviews.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "searchProductDetails.imgUrl",
+            "description": "<p>Url of the displayed image.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response-example:",
-          "content": "    HTTP/1.1 200 OK\n\t{\n   \"responseStatus\": \"PRODUCT_FOUND_RESPONSE\",\n   \"responseMessage\": \"Product successfully found!\",\n   \"sortStrategy\": \"date-desc-rank\",\n   \"domainCode\": \"com\",\n   \"keyword\": \"Playstation 4\",\n   \"numberOfProducts\": 10,\n   \"foundProducts\": [\n      \"B07KY8VKGK\",\n      \"B07BQFYHKG\",\n      \"B07KVP1C4N\",\n      \"B07KPQRRFY\",\n      \"B07KPMFPLN\",\n      \"B07KP15HZX\",\n      \"B07HHW8C4V\",\n      \"B07JHY99XV\",\n      \"B07KJXNYK9\",\n      \"B07KGJPBKY\"\n\t}\n\t  \"foundProductDetails\" : []",
+          "content": "    HTTP/1.1 200 OK\n\t{\n   \"responseStatus\": \"PRODUCT_FOUND_RESPONSE\",\n   \"responseMessage\": \"Product successfully found!\",\n   \"sortStrategy\": \"date-desc-rank\",\n   \"domainCode\": \"com\",\n   \"keyword\": \"Playstation 4\",\n   \"numberOfProducts\": 10,\n   \"foundProducts\": [\n      \"B07KY8VKGK\",\n      \"B07BQFYHKG\",\n      \"B07KVP1C4N\",\n      \"B07KPQRRFY\",\n      \"B07KPMFPLN\",\n      \"B07KP15HZX\",\n      \"B07HHW8C4V\",\n      \"B07JHY99XV\",\n      \"B07KJXNYK9\",\n      \"B07KGJPBKY\"\n\t],\n \"searchProductDetails\": [\n     {\n           \"productDescription\": \"JETech Case for Apple iPhone 8 and iPhone 7, 4.7-Inch, Shock-Absorption Bumper Cover, Anti-Scratch Clear Back, HD Clear\",\n           \"asin\": \"B07KY8VKGK\",\n           \"countReview\": 24079,\n           \"imgUrl\": \"https://m.media-amazon.com/images/I/71sHaPpboUL._AC_UL320_ML3_.jpg\"\n       },\n       {\n           \"productDescription\": \"OtterBox Commuter Series Case for iPhone 8 & iPhone 7 (NOT Plus) - Frustration Free Packaging - BLACK\",\n           \"asin\": \"B07BQFYHKG\",\n           \"countReview\": 13652,\n           \"imgUrl\": \"https://m.media-amazon.com/images/I/91bgVqK+-sL._AC_UL320_ML3_.jpg\"\n       },\n       {\n           \"productDescription\": \"iPhone 8 Case Liquid Silicone, iPhone 7 Silicone Case Miracase Gel Rubber Full Body Protection Shockproof Cover Case Drop Protection for Apple iPhone 7/ iPhone 8(4.7\\\") (Clove Purple)\",\n           \"asin\": \"B07KVP1C4N\",\n           \"countReview\": 2523,\n           \"imgUrl\": \"https://m.media-amazon.com/images/I/61JbPNGWyFL._AC_UL320_ML3_.jpg\"\n       },\n       {\n           \"productDescription\": \"Smartish iPhone 11 Pro Armor Case - Gripzilla [Rugged + Protective] Slim Tough Grip Cover - Black Tie Affair\",\n           \"asin\": \"B07KPQRRFY\",\n           \"countReview\": 427,\n          \"imgUrl\": \"https://m.media-amazon.com/images/I/71stlFO+faL._AC_UL320_ML3_.jpg\"\n       }\n\t\t]\n\t}",
           "type": "json"
         }
       ]
