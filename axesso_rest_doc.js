@@ -96,13 +96,14 @@
  *           "name": "Amazon Bestsellers Rank",
  *           "value": "392,852 in Home & Kitchen (See Top 100 in Home & Kitchen) #336 in Dinner Sets"
  *       }
- *	  "prime": false,
- *	  "addon": false,
- *	  "pantry": false,
- *	  "minimalQuantity": null,
- *	  "dealPrice": 71.42,
- *	  "salePrice": 0.0,
- * 	  "reviews": [
+ *   ],
+ *    "prime": false,
+ *    "addon": false,
+ *    "pantry": false,
+ *    "minimalQuantity": null,
+ *    "dealPrice": 71.42,
+ *    "salePrice": 0.0,
+ *    "reviews": [
  *       {
  *           "text": "Purchased New, received Used, already registered to another owner, with a game disc in the tray.",
  *           "date": "Reviewed in the United States on September 11, 2018",
@@ -112,7 +113,7 @@
  *           "url": "/gp/customer-reviews/RDHY3HUVO55FH/ref=cm_cr_dp_d_rvw_ttl?ie=UTF8&ASIN=B01LOP8EZC"
  *       }
  *	],
- *	  "variations": [
+ *    "variations": [
  *       {
  *           "variationName": "variation_edition",
  *           "values": [
@@ -130,16 +131,16 @@
  *              }
  *		}
  *	 ],
- * "categories": [
+ *    "categories": [
  *       "Video Games",
  *       "PlayStation 4",
  *      "Consoles"
  *  ],
- *   "currency": {
+ *    "currency": {
  *       "code": "USD",
  *       "symbol": "$"
  *   },
- *   "acKeywordLink": "ps4 pro"
+ *    "acKeywordLink": "ps4 pro"
  *	}
  *
  *
