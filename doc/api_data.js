@@ -1,6 +1,118 @@
 define({ "api": [
   {
     "type": "get",
+    "url": "prd.axesso.de/usr/user-account-info",
+    "title": "Request Account Information",
+    "version": "1.2.0",
+    "name": "GetAccountInformation",
+    "group": "Account_Info",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>API key required in this format: axesso-api-key=xxxxx</p>"
+          },
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>(application/json).</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "apiKey",
+            "description": "<p>API key of account (required).</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Input-Example",
+          "content": "http://api-prd.axesso.de/usr/user-account-info?apiKey=chf7432h-dsj5-md28-fn0h-38dhglqak814",
+          "type": "query"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>E-Mail of account.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "apiKey",
+            "description": "<p>API key of account.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "int",
+            "optional": false,
+            "field": "monthlyLimit",
+            "description": "<p>Monthly usage limit.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "int",
+            "optional": false,
+            "field": "requestsUsed",
+            "description": "<p>Amount of requests already used.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "currentPeriod",
+            "description": "<p>Current period containg month and year.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "lastPeriodRequestsUsed",
+            "description": "<p>Amount of requests from last month.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response-example:",
+          "content": "    HTTP/1.1 200 OK\n{\n  \"email\": \"john@doe.com\",\n   \"apiKey\": \"chf7432h-dsj5-md28-fn0h-38dhglqak814\",\n   \"monthlyLimit\": 50000,\n   \"requestsUsed\": 305,\n   \"currentPeriod\": \"JULY 2020\",\n   \"lastPeriodRequestsUsed\": 0\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response-404:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"logref\": \"error\",\n  \"message\": \"Could not find account information for API key: =chf7432h-dsj5-md28-fn0h-38dhglqak81. Please contact support@axesso.de.\",\n  \"links\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./axesso_rest_doc.js",
+    "groupTitle": "Account_Info"
+  },
+  {
+    "type": "get",
     "url": "alb.axesso.de/alb/alibaba-lookup-product",
     "title": "Request Product Information",
     "version": "1.1.0",
@@ -13,7 +125,7 @@ define({ "api": [
             "group": "Header",
             "optional": false,
             "field": "Authorization",
-            "description": "<p>API key required.</p>"
+            "description": "<p>API key required in this format: axesso-api-key=xxxxx</p>"
           },
           {
             "group": "Header",
@@ -234,7 +346,7 @@ define({ "api": [
             "group": "Header",
             "optional": false,
             "field": "Authorization",
-            "description": "<p>API key required.</p>"
+            "description": "<p>API key required in this format: axesso-api-key=xxxxx</p>"
           },
           {
             "group": "Header",
@@ -395,7 +507,7 @@ define({ "api": [
             "group": "Header",
             "optional": false,
             "field": "Authorization",
-            "description": "<p>API key required.</p>"
+            "description": "<p>API key required in this format: axesso-api-key=xxxxx</p>"
           },
           {
             "group": "Header",
@@ -525,7 +637,7 @@ define({ "api": [
             "group": "Header",
             "optional": false,
             "field": "Authorization",
-            "description": "<p>API key required.</p>"
+            "description": "<p>API key required in this format: axesso-api-key=xxxxx</p>"
           },
           {
             "group": "Header",
@@ -963,7 +1075,7 @@ define({ "api": [
             "group": "Header",
             "optional": false,
             "field": "Authorization",
-            "description": "<p>Authorization API key required.</p>"
+            "description": "<p>Authorization API key required in this format: axesso-api-key=xxxxx</p>"
           },
           {
             "group": "Header",
@@ -1208,7 +1320,7 @@ define({ "api": [
             "group": "Header",
             "optional": false,
             "field": "Authorization",
-            "description": "<p>API key required.</p>"
+            "description": "<p>API key required in this format: axesso-api-key=xxxxx</p>"
           },
           {
             "group": "Header",
@@ -1510,7 +1622,7 @@ define({ "api": [
             "group": "Header",
             "optional": false,
             "field": "Authorization",
-            "description": "<p>API key required.</p>"
+            "description": "<p>API key required in this format: axesso-api-key=xxxxx</p>"
           },
           {
             "group": "Header",
@@ -1738,7 +1850,7 @@ define({ "api": [
             "group": "Header",
             "optional": false,
             "field": "Authorization",
-            "description": "<p>API key required.</p>"
+            "description": "<p>API key required in this format: axesso-api-key=xxxxx</p>"
           },
           {
             "group": "Header",

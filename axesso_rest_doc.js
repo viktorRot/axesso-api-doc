@@ -5,7 +5,7 @@
  * @apiName GetProductInformation
  * @apiGroup Amazon
  *
- * @apiHeader Authorization API key required. 
+ * @apiHeader Authorization API key required in this format: axesso-api-key=xxxxx 
  * @apiHeader Content-Type (application/json).
  * @apiParam {String} url URL for product page (required).
  * @apiParam {String} merchant Id of a specific merchant (optional).
@@ -183,7 +183,7 @@
  * @apiName GetBuyRecommendations
  * @apiGroup Amazon
  *
- * @apiHeader Authorization API key required.
+ * @apiHeader Authorization API key required in this format: axesso-api-key=xxxxx
  * @apiHeader Content-Type (application/json).
  * @apiParam {String} url Product URL for which to fetch recommended products (required).
  * @apiParamExample {query} Input-Example
@@ -250,7 +250,7 @@
  * @apiName SearchByKeyword
  * @apiGroup Amazon
  *
- * @apiHeader Authorization API key required.
+ * @apiHeader Authorization API key required in this format: axesso-api-key=xxxxx
  * @apiHeader Content-Type (application/json).
  * @apiParam {String} keyword Search key (required).
  * @apiParam {String} domainCode Amazon domain, which should be used (required).
@@ -350,7 +350,7 @@
  * @apiName LookupPrices
  * @apiGroup Amazon
  *
- * @apiHeader Authorization Authorization API key required.
+ * @apiHeader Authorization Authorization API key required in this format: axesso-api-key=xxxxx
  * @apiHeader Content-Type (application/json).
  * @apiParam {String} asin Asin of the product (required).
  * @apiParam {String} domainCode Amazon domain, which should be used (required).
@@ -506,7 +506,7 @@
  * @apiName GetProductInformation
  * @apiGroup Walmart
  *
- * @apiHeader Authorization API key required. 
+ * @apiHeader Authorization API key required in this format: axesso-api-key=xxxxx 
  * @apiHeader Content-Type (application/json).
  * @apiParam {String} url URL for product page (required).
  * @apiParamExample {query} Input-Example
@@ -635,7 +635,7 @@
  * @apiName SearchByKeyword
  * @apiGroup Walmart
  *
- * @apiHeader Authorization API key required.
+ * @apiHeader Authorization API key required in this format: axesso-api-key=xxxxx
  * @apiHeader Content-Type (application/json).
  * @apiParam {String} keyword Search key (required).
  * @apiParam {String} type Type of invocation. Possible values are "upc" or "text" (required).
@@ -714,7 +714,7 @@
  * @apiName SearchByKeyword
  * @apiGroup Alibaba
  *
- * @apiHeader Authorization API key required.
+ * @apiHeader Authorization API key required in this format: axesso-api-key=xxxxx
  * @apiHeader Content-Type (application/json).
  * @apiParam {String} keyword Search key (required).
  * @apiParam {String} type Type of invocation. Possible values are "upc" or "text" (required).
@@ -780,7 +780,7 @@
  * @apiName GetProductInformation
  * @apiGroup Alibaba
  *
- * @apiHeader Authorization API key required.
+ * @apiHeader Authorization API key required in this format: axesso-api-key=xxxxx
  * @apiHeader Content-Type (application/json).
  * @apiParam {String} URL URL for product page (required).
  * @apiParamExample {query} Input-Example
@@ -867,6 +867,50 @@
  *       "message": "the url parameter is incorrect: 'ttps://www.alibaba.com/product-detail/USB-PXN-0082-Arcade-Joystick-Wired_60612038161.html?spm=a2700.details.deiletai6.29.58cc55e3i5R8ml'",
  *       "links": []
  *     }
+ *
+ */
+ 
+ 
+ /**
+ * @api {get} prd.axesso.de/usr/user-account-info Request Account Information
+ * @apiVersion 1.2.0
+ * @apiName GetAccountInformation
+ * @apiGroup Account Info
+ *
+ * @apiHeader Authorization API key required in this format: axesso-api-key=xxxxx 
+ * @apiHeader Content-Type (application/json).
+ * @apiParam {String} apiKey API key of account (required).
+ * @apiParamExample {query} Input-Example
+ *    http://api-prd.axesso.de/usr/user-account-info?apiKey=chf7432h-dsj5-md28-fn0h-38dhglqak814
+ *
+ * @apiSuccess {String} email E-Mail of account.
+ * @apiSuccess {String} apiKey  API key of account.
+ * @apiSuccess {int} monthlyLimit  Monthly usage limit.
+ * @apiSuccess {int} requestsUsed  Amount of requests already used.
+ * @apiSuccess {String} currentPeriod  Current period containg month and year.
+ * @apiSuccess {Int} lastPeriodRequestsUsed  Amount of requests from last month.
+ *
+ * @apiSuccessExample Success-Response-example:
+ *     HTTP/1.1 200 OK
+ *{
+ *   "email": "john@doe.com",
+ *    "apiKey": "chf7432h-dsj5-md28-fn0h-38dhglqak814",
+ *    "monthlyLimit": 50000,
+ *    "requestsUsed": 305,
+ *    "currentPeriod": "JULY 2020",
+ *    "lastPeriodRequestsUsed": 0
+ *}
+ *
+ *
+ * @apiErrorExample Error-Response-404:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "logref": "error",
+ *       "message": "Could not find account information for API key: =chf7432h-dsj5-md28-fn0h-38dhglqak81. Please contact support@axesso.de.",
+ *       "links": []
+ *     }
+ *
+ *
  *
  */
  
