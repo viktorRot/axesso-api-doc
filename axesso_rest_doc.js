@@ -5,7 +5,7 @@
  * @apiName GetProductInformation
  * @apiGroup Amazon
  *
- * @apiHeader Authorization API key required in this format: axesso-api-key=xxxxx 
+ * @apiHeader Authorization API key required in this format: axesso-api-key=xxxxx
  * @apiHeader Content-Type (application/json).
  * @apiParam {String} url URL for product page (required).
  * @apiParam {String} merchant Id of a specific merchant (optional).
@@ -19,13 +19,14 @@
  * @apiSuccess {Int} countReview  Number of reviews.
  * @apiSuccess {Int} answeredQuestions  Number of answered questions.
  * @apiSuccess {String} productRating  Rating of the product.
- * @apiSuccess {String} asin  Asin of the product. 
+ * @apiSuccess {String} asin  Asin of the product.
  * @apiSuccess {Array} sizeSelection Selection of sizes, if available.
  * @apiSuccess {String} soldBy  Retailer selling the product.
  * @apiSuccess {String} fulfilledBy Retailer fulfilling the purchase.
  * @apiSuccess {String} warehouseAvailability Indication of availability.
  * @apiSuccess {Number} retailPrice Retail price.
  * @apiSuccess {Number} price Actual price.
+ * @apiSuccess {Number} shippingPrice Shipping price.
  * @apiSuccess {String} priceShippingInformation Information to the shipping cost.
  * @apiSuccess {String} priceSaving Savings to retail price.
  * @apiSuccess {Array} features List of features of the product.
@@ -77,6 +78,7 @@
  *    "warehouseAvailability": "In Stock.",
  *    "retailPrice": 137.55,
  *    "price": 77.42,
+ *    "shippingPrice" : 3.12,
  *    "priceShippingInformation": "free",
  *    "priceSaving": "You Save: $59,58 (43%)",
  *    "features": [
@@ -179,7 +181,7 @@
 
  /**
  * @api {get} prd.axesso.de/amz/amazon-lookup-buy-recommendations Request Recommendations
- * @apiVersion 1.1.0
+ * @apiVersion 1.2.0
  * @apiName GetBuyRecommendations
  * @apiGroup Amazon
  *
@@ -243,10 +245,10 @@
  *     }
  *
  */
- 
+
  /**
  * @api {get} prd.axesso.de/amz/amazon-search-by-keyword-asin Search Products by Keyword
- * @apiVersion 1.1.0
+ * @apiVersion 1.2.0
  * @apiName SearchByKeyword
  * @apiGroup Amazon
  *
@@ -342,11 +344,11 @@
  *
  *
  */
- 
- 
+
+
  /**
  * @api {get} prd.axesso.de/amz/amazon-lookup-prices Request all Seller Prices
- * @apiVersion 1.1.0
+ * @apiVersion 1.2.0
  * @apiName LookupPrices
  * @apiGroup Amazon
  *
@@ -421,7 +423,7 @@
  *            "prime": false
  *        }
  *	]
- *}	
+ *}
  *
  *
  * @apiErrorExample Error-Response-400:
@@ -445,11 +447,11 @@
  *
  *
  */
- 
- 
+
+
  /**
  * @api {get} prd.axesso.de/amz/sort-options Request Sort Options
- * @apiVersion 1.1.0
+ * @apiVersion 1.2.0
  * @apiName SortOptions
  * @apiGroup Amazon
  *
@@ -498,15 +500,15 @@
  *	 }
  *
  */
- 
- 
+
+
  /**
  * @api {get} wlm.axesso.de/wlm/walmart-lookup-product Request Product Information
- * @apiVersion 1.0.0
+ * @apiVersion 1.2.0
  * @apiName GetProductInformation
  * @apiGroup Walmart
  *
- * @apiHeader Authorization API key required in this format: axesso-api-key=xxxxx 
+ * @apiHeader Authorization API key required in this format: axesso-api-key=xxxxx
  * @apiHeader Content-Type (application/json).
  * @apiParam {String} url URL for product page (required).
  * @apiParamExample {query} Input-Example
@@ -518,7 +520,7 @@
  * @apiSuccess {String} manufacturer  Manufacturer of the product.
  * @apiSuccess {Int} countReview  Number of reviews.
  * @apiSuccess {String} productRating  Rating of the product.
- * @apiSuccess {Int} walmartItemId  Item id of the product. 
+ * @apiSuccess {Int} walmartItemId  Item id of the product.
  * @apiSuccess {Array} sizeSelection Selection of sizes, if available.
  * @apiSuccess {String} soldAndShippedBy  Retailer selling and fulfilling the purchase.
  * @apiSuccess {Boolean} available Indication of availability.
@@ -628,10 +630,10 @@
  *
  *
  */
- 
+
   /**
  * @api {get} wlm.axesso.de/wlm/walmart-search-by-keyword Search Products by Keyword
- * @apiVersion 1.1.0
+ * @apiVersion 1.2.0
  * @apiName SearchByKeyword
  * @apiGroup Walmart
  *
@@ -707,10 +709,10 @@
  *
  *
  */
- 
+
   /**
  * @api {get} alb.axesso.de/alb/alibaba-search-by-keyword Search Products by Keyword
- * @apiVersion 1.1.0
+ * @apiVersion 1.2.0
  * @apiName SearchByKeyword
  * @apiGroup Alibaba
  *
@@ -773,10 +775,10 @@
  *
  *
  */
- 
+
   /**
  * @api {get} alb.axesso.de/alb/alibaba-lookup-product Request Product Information
- * @apiVersion 1.1.0
+ * @apiVersion 1.2.0
  * @apiName GetProductInformation
  * @apiGroup Alibaba
  *
@@ -869,15 +871,15 @@
  *     }
  *
  */
- 
- 
+
+
  /**
  * @api {get} prd.axesso.de/usr/user-account-info Request Account Information
  * @apiVersion 1.2.0
  * @apiName GetAccountInformation
  * @apiGroup Account Info
  *
- * @apiHeader Authorization API key required in this format: axesso-api-key=xxxxx 
+ * @apiHeader Authorization API key required in this format: axesso-api-key=xxxxx
  * @apiHeader Content-Type (application/json).
  * @apiParam {String} apiKey API key of account (required).
  * @apiParamExample {query} Input-Example
@@ -913,4 +915,3 @@
  *
  *
  */
- 
