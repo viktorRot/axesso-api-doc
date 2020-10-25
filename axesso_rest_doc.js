@@ -345,6 +345,108 @@
  *
  */
 
+ /**
+ * @api {get} prd.axesso.de/amz/amazon-lookup-reviews Request Review Information
+ * @apiVersion 1.2.0
+ * @apiName lookupReviews
+ * @apiGroup Amazon
+ *
+ * @apiHeader Authorization API key required in this format: axesso-api-key=xxxxx
+ * @apiHeader Content-Type (application/json).
+ * @apiParam {String} asin Product asin to lookup (required).
+ * @apiParam {String} domainCode Amazon domain, which should be used (required).
+ * @apiParam {int} page Page, which will be returned (Pagination, required).
+ * @apiParam {String} sortBy Sort option. Possible values: "recent" (default), "helpful" (optional).
+ * @apiParam {String} filters Semicolon seperated list of filters. E.g: "reviewerType=avp_only_reviews;filterByStar=two_star" (optional).
+ * @apiParamExample {query} Input-Example
+ *    http://api-prd.axesso.de/amz/amazon-lookup-reviews?domainCode=com&page=1&asin=B079338B9X&sortBy=recent&filters=reviewerType=avp_only_reviews;filterByStar=two_star
+ *
+ * @apiSuccess {String} responseStatus 	Response status of request.
+ * @apiSuccess {String} responseMessage  Response Message of request.
+ * @apiSuccess {String} asin  Used asin.
+ * @apiSuccess {Int} currentPage  Returned page.
+ * @apiSuccess {String} sortStrategy Sort option.
+ * @apiSuccess {String} domainCode Amazon domain, which was used.
+ * @apiSuccess {Json} filters Map of used filters.
+ * @apiSuccess {Int} countReviews  Number of reviews.
+ * @apiSuccess {Int} lastPage  The last page.
+ * @apiSuccess {Object[]} reviews List of reviews for the given asin and page.
+ * @apiSuccess {String} reviews.reviewId Unique review id.
+ * @apiSuccess {String} reviews.parentReviewId Parent review id.
+ * @apiSuccess {String} reviews.text Review text.
+ * @apiSuccess {String} reviews.date Date of review creation.
+ * @apiSuccess {String} reviews.rating Review rating.
+ * @apiSuccess {String} reviews.title Revie title.
+ * @apiSuccess {String} reviews.userName User created the review.
+ * @apiSuccess {Int} reviews.numberOfHelpful Number of user who found review helpful.
+ * @apiSuccess {Array} reviews.imageUrlList List of images which belong to the review.
+ * @apiSuccess {Boolean} reviews.verified Indication if purchase is verfied.
+ *
+ * @apiSuccessExample Success-Response-example:
+ *     HTTP/1.1 200 OK
+ *	{
+ *    "responseStatus": "PRODUCT_FOUND_RESPONSE",
+ *    "responseMessage": "Product successfully found!",
+ *    "asin": "B079338B9X",
+ *    "currentPage": 1,
+ *    "sortStrategy": "recent",
+ *    "domainCode": "com",
+ *    "filters": {
+ *        "filterByStar": "two_star",
+ *        "reviewerType": "avp_only_reviews"
+ *    },
+ *    "productTitle": "YnM Cotton Duvet Cover for Weighted Blankets (Dark Grey, 48''x72'')",
+ *    "countReviews": 119,
+ *    "lastPage": 12,
+ *    "reviews": [
+ *        {
+ *            "reviewId": "R2UVTBHEC0YG9O",
+ *            "parentReviewId": null,
+ *            "text": "The duvet cover was sized to go over the matching weighted blanket but the cover is too small! The weighted blanket has to be bunched to fit inside. Beautiful cover...extremely disappointed about fit.",
+ *            "date": "Reviewed in the United States on October 1, 2020",
+ *            "rating": "2.0 out of 5 stars",
+ *            "title": "Duvet cover dimensions inaccurate.",
+ *            "userName": "Amazon Customer",
+ *            "numberOfHelpful": 0,
+ *            "imageUrlList": null,
+ *            "verified": true
+ *        },
+ *        {
+ *            "reviewId": "R24VPRY2RXBFZK",
+ *            "parentReviewId": null,
+ *            "text": "The blanket comes unattached from the loops and you can’t keep the blanket even. I tried all different types of tying techniques and they all came loose. The feel of the blanket is great and it does help keep you cooler. It is just pointless if the blanket inside won’t stay attached. I bought it for the YnM weighted blanket, therefore it is the same brand and made for each other.",
+ *            "date": "Reviewed in the United States on September 10, 2020",
+ *            "rating": "2.0 out of 5 stars",
+ *            "title": "Soft, cooling but read review",
+ *            "userName": "Gemini_Butterfly",
+ *            "numberOfHelpful": 0,
+ *            "imageUrlList": null,
+ *            "verified": true
+ *        }
+ *    ]
+ *  }
+ *
+ * @apiErrorExample Error-Response-400:
+ *     HTTP/1.1 400 Bad Request
+ *     {
+ *       "logref": "error",
+ *       "message": "Required String parameter 'asin' is not present",
+ *       "links": []
+ *     }
+ *
+ * @apiError MissingParameter Some required parameter are missing.
+ * @apiError ProductNotFound The product for the requested parameters could not be found.
+ *
+ * @apiErrorExample Error-Response-404:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "logref": "error",
+ *       "message": "could not find product for parametes asin: ABCSGDHW78",
+ *       "links": []
+ *     }
+ *
+ *
+ */
 
  /**
  * @api {get} prd.axesso.de/amz/amazon-lookup-prices Request all Seller Prices
