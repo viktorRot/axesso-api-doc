@@ -734,7 +734,7 @@
  */
 
   /**
- * @api {get} wlm.axesso.de/wlm/walmart-search-by-keyword Search Products by Keyword
+ * @api {get} prd2.axesso.de/wlm/walmart-search-by-keyword Search Products by Keyword
  * @apiVersion 1.2.0
  * @apiName SearchByKeyword
  * @apiGroup Walmart

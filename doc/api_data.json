@@ -2363,7 +2363,7 @@
   },
   {
     "type": "get",
-    "url": "wlm.axesso.de/wlm/walmart-search-by-keyword",
+    "url": "prd2.axesso.de/wlm/walmart-search-by-keyword",
     "title": "Search Products by Keyword",
     "version": "1.2.0",
     "name": "SearchByKeyword",
