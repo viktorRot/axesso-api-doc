@@ -1735,7 +1735,7 @@
           },
           {
             "group": "Success 200",
-            "type": "Json",
+            "type": "Object",
             "optional": false,
             "field": "filters",
             "description": "<p>Map of used filters.</p>"
@@ -1994,7 +1994,7 @@
           },
           {
             "group": "Success 200",
-            "type": "Json",
+            "type": "Object",
             "optional": false,
             "field": "filters",
             "description": "<p>Map of used filters.</p>"
@@ -2132,6 +2132,468 @@
     },
     "filename": "./axesso_rest_doc.js",
     "groupTitle": "Amazon"
+  },
+  {
+    "type": "get",
+    "url": "prd2.axesso.de/tpa/tripadvisor-lookup-reviews",
+    "title": "Request Review Information",
+    "version": "1.2.0",
+    "name": "lookupReviews",
+    "group": "TripAdvisor",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>API key required in this format: axesso-api-key=xxxxx</p>"
+          },
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>(application/json).</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "url",
+            "description": "<p>Url to get reviews from. (required).</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Input-Example",
+          "content": "http://api-prd2.axesso.de/tpa/tripadvisor-lookup-reviews?url=https://www.tripadvisor.com/Hotel_Review-g35805-d225105-Reviews-The_Peninsula_Chicago-Chicago_Illinois.html",
+          "type": "query"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "responseStatus",
+            "description": "<p>Response status of request.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "responseMessage",
+            "description": "<p>Response Message of request.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "previousPage",
+            "description": "<p>Url of the last page.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "currentPage",
+            "description": "<p>Url of the current page.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "nextPage",
+            "description": "<p>Url of the next page.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "countReviews",
+            "description": "<p>Number of reviews.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "reviews",
+            "description": "<p>List of reviews for the given url.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "reviews.id",
+            "description": "<p>Unique review id.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.url",
+            "description": "<p>Uri path to this particular review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.createdDate",
+            "description": "<p>Date of review creation.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.publishedDate",
+            "description": "<p>Date when review published.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "reviews.provider",
+            "description": "<p>Information about provider.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.provider.isLocalProvider",
+            "description": "<p>Identifies local provider.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.provider.isToolsProvider",
+            "description": "<p>Identifies tool provider.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "reviews.userProfile",
+            "description": "<p>Information about user.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.userProfile.id",
+            "description": "<p>Profile unique identifier.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.userProfile.userId",
+            "description": "<p>User unique identifier.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.userProfile.isMe",
+            "description": "<p>Identifies if user is logged in user.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.userProfile.isVerified",
+            "description": "<p>Identifies if review is verfied.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.userProfile.displayName",
+            "description": "<p>Displayed name of user.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.userProfile.username",
+            "description": "<p>Username.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "reviews.userProfile.avatar",
+            "description": "<p>Information about used avatar.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.userProfile.hometown",
+            "description": "<p>Hometown of user.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "reviews.userProfile.contributionCounts",
+            "description": "<p>Number of contributions.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.userProfile.route",
+            "description": "<p>Url path to user profile.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.userProfile.isFollowing",
+            "description": "<p>Identifies if user is following this location.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.title",
+            "description": "<p>Title of review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.language",
+            "description": "<p>Review language.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "reviews.tripInfo",
+            "description": "<p>Information about the trip.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "reviews.additionalRatings",
+            "description": "<p>Rating of particular items (Room, Service ..).</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "reviews.mgmtResponse",
+            "description": "<p>Response of location management.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "reviews.mgmtResponse.id",
+            "description": "<p>Id of response.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.mgmtResponse.language",
+            "description": "<p>Language of response.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.mgmtResponse.text",
+            "description": "<p>Resposne text.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.mgmtResponse.publishedDate",
+            "description": "<p>Date response published.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.mgmtResponse.username",
+            "description": "<p>Username who entered response.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.mgmtResponse.connectionToSubject",
+            "description": "<p>Position to subject.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.text",
+            "description": "<p>Review text.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "reviews.locationId",
+            "description": "<p>Unique identifier of location.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "reviews.rating",
+            "description": "<p>Rating.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.absoluteUrl",
+            "description": "<p>Url path to this review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "reviews.mcid",
+            "description": "<p>Unique identifier of mc.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "reviews.mtProviderId",
+            "description": "<p>Unique identifier of provider.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "reviews.photos",
+            "description": "<p>List of photos related to the review and location.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "reviews.helpfulVotes",
+            "description": "<p>Rating.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int[]",
+            "optional": false,
+            "field": "reviews.photoIds",
+            "description": "<p>List of photo ids.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "reviews.route",
+            "description": "<p>Uri path to the particular review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "reviews.socialStatistics",
+            "description": "<p>Information about social statistics.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.status",
+            "description": "<p>Status of review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.userId",
+            "description": "<p>Unique identifier of user.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reviews.originalLanguage",
+            "description": "<p>Language in which review was entered.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "reviews.labels",
+            "description": "<p>List of labels.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "reviews.alertStatus",
+            "description": "<p>Alert status.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response-example:",
+          "content": "    HTTP/1.1 200 OK\n\t{\n \"responseStatus\": \"PRODUCT_FOUND_RESPONSE\",\n   \"responseMessage\": \"Product successfully found!\",\n   \"previousPage\": null,\n   \"currentPage\": \"https://www.tripadvisor.com/Hotel_Review-g35805-d225105-Reviews-The_Peninsula_Chicago-Chicago_Illinois.html\",\n   \"nextPage\": \"/Hotel_Review-g35805-d225105-Reviews-or5-The_Peninsula_Chicago-Chicago_Illinois.html\",\n   \"countReviews\": 1863,\n   \"reviews\": [\n       {\n           \"id\": 749775985,\n           \"url\": \"/ShowUserReviews-g35805-d225105-r749775985-The_Peninsula_Chicago-Chicago_Illinois.html\",\n           \"createdDate\": \"2020-03-07\",\n           \"publishedDate\": \"2020-03-07\",\n           \"provider\": {\n               \"isLocalProvider\": true,\n               \"isToolsProvider\": true\n           },\n           \"userProfile\": {\n               \"id\": \"0D4C1CAEE30ECD6091708CE72AE5B2F2\",\n               \"userId\": \"0D4C1CAEE30ECD6091708CE72AE5B2F2\",\n               \"isMe\": false,\n               \"isVerified\": false,\n               \"displayName\": \"Paul Bkk\",\n               \"username\": \"paulbkk888\",\n               \"avatar\": {\n                   \"id\": 438816317,\n                   \"photoSizes\": [\n                       {\n                           \"url\": \"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/27/ce/3d/caption.jpg?w=100&h=100&s=1\",\n                           \"width\": 0,\n                           \"height\": 0\n                       },\n                       {\n                           \"url\": \"https://media-cdn.tripadvisor.com/media/photo-t/1a/27/ce/3d/caption.jpg\",\n                           \"width\": 50,\n                           \"height\": 50\n                       },\n                       {\n                           \"url\": \"https://media-cdn.tripadvisor.com/media/photo-l/1a/27/ce/3d/caption.jpg\",\n                           \"width\": 150,\n                           \"height\": 150\n                       },\n                       {\n                           \"url\": \"https://media-cdn.tripadvisor.com/media/photo-i/1a/27/ce/3d/caption.jpg\",\n                           \"width\": 180,\n                           \"height\": 200\n                       },\n                       {\n                           \"url\": \"https://media-cdn.tripadvisor.com/media/photo-f/1a/27/ce/3d/caption.jpg\",\n                           \"width\": 205,\n                           \"height\": 205\n                       },\n                       {\n                           \"url\": \"https://media-cdn.tripadvisor.com/media/photo-o/1a/27/ce/3d/caption.jpg\",\n                           \"width\": 450,\n                           \"height\": 450\n                       }\n                   ]\n               },\n               \"hometown\": {\n                   \"locationId\": 293916,\n                   \"fallbackString\": \"293916\",\n                   \"location\": {\n                       \"locationId\": 293916,\n                       \"additionalNames\": {\n                           \"long\": \"Bangkok, Thailand\"\n                       },\n                       \"name\": \"Bangkok\"\n                   }\n               },\n               \"contributionCounts\": {\n                   \"sumAllUgc\": 112,\n                   \"helpfulVote\": 5\n               },\n               \"route\": {\n                   \"url\": \"/Profile/paulbkk888\"\n               },\n               \"isFollowing\": false\n           },\n           \"title\": \"Excellent service staff\",\n           \"language\": \"en\",\n           \"tripInfo\": {\n               \"stayDate\": \"2019-04-30\",\n               \"tripType\": \"BUSINESS\"\n           },\n           \"additionalRatings\": [],\n           \"mgmtResponse\": {\n               \"id\": 750131856,\n               \"language\": \"en\",\n               \"text\": \"Dear paulbkk888, \\n\\nWe are delighted to learn that you enjoyed your stay with us and our service.  We also appreciate your comments on the décor and cuisine. \\n\\nThank you for choosing The Peninsula as the place to stay when visiting Chicago.  We all look forward to welcoming you back again soon. \\n\\nWarm regards, \\n\\nMax Schroeder \\nHotel Manager  \",\n               \"publishedDate\": \"2020-03-09\",\n               \"username\": \"Peninsula_CH\",\n               \"connectionToSubject\": \"Manager\"\n           },\n           \"text\": \"Excellent service staff for 6 stars hotel. \\nLove all new decoration of main lobby, and room. Must see and check point for hangout at rooftop with 360 building view. \\nAll good for breakfast with a signature peninsula egg menu . \",\n           \"username\": \"paulbkk888\",\n           \"locationId\": 225105,\n           \"rating\": 5,\n           \"absoluteUrl\": \"https://www.tripadvisor.com/ShowUserReviews-g35805-d225105-r749775985-The_Peninsula_Chicago-Chicago_Illinois.html\",\n           \"mcid\": 0,\n           \"mtProviderId\": 0,\n           \"photos\": [\n               {\n                   \"id\": 454793848,\n                   \"statuses\": [\n                       \"PUBLISHED\"\n                   ],\n                   \"photoSizes\": [\n                       {\n                           \"url\": \"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/1b/9a/78/photo4jpg.jpg?w=100&h=100&s=1\",\n                           \"width\": 0,\n                           \"height\": 0\n                       },\n                       {\n                           \"url\": \"https://media-cdn.tripadvisor.com/media/photo-t/1b/1b/9a/78/photo4jpg.jpg\",\n                           \"width\": 50,\n                           \"height\": 50\n                       }\n                   ]\n               },\n               {\n                   \"id\": 454793847,\n                   \"statuses\": [\n                       \"PUBLISHED\"\n                   ],\n                   \"photoSizes\": [\n                       {\n                           \"url\": \"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/1b/9a/77/photo3jpg.jpg?w=100&h=100&s=1\",\n                           \"width\": 0,\n                           \"height\": 0\n                       },\n                       {\n                           \"url\": \"https://media-cdn.tripadvisor.com/media/photo-t/1b/1b/9a/77/photo3jpg.jpg\",\n                           \"width\": 50,\n                           \"height\": 50\n                       },\n                       {\n                           \"url\": \"https://media-cdn.tripadvisor.com/media/photo-l/1b/1b/9a/77/photo3jpg.jpg\",\n                           \"width\": 150,\n                           \"height\": 150\n                       },\n                       {\n                           \"url\": \"https://media-cdn.tripadvisor.com/media/photo-f/1b/1b/9a/77/photo3jpg.jpg\",\n                           \"width\": 164,\n                           \"height\": 205\n                       },\n                       {\n                           \"url\": \"https://media-cdn.tripadvisor.com/media/photo-i/1b/1b/9a/77/photo3jpg.jpg\",\n                           \"width\": 180,\n                           \"height\": 200\n                       },\n                       {\n                           \"url\": \"https://media-cdn.tripadvisor.com/media/photo-s/1b/1b/9a/77/photo3jpg.jpg\",\n                           \"width\": 360,\n                           \"height\": 450\n                       },\n                       {\n                           \"url\": \"https://media-cdn.tripadvisor.com/media/photo-p/1b/1b/9a/77/photo3jpg.jpg\",\n                           \"width\": 550,\n                           \"height\": 688\n                       },\n                       {\n                           \"url\": \"https://media-cdn.tripadvisor.com/media/photo-m/1280/1b/1b/9a/77/photo3jpg.jpg\",\n                           \"width\": 1024,\n                           \"height\": 1280\n                       },\n                       {\n                           \"url\": \"https://media-cdn.tripadvisor.com/media/photo-w/1b/1b/9a/77/photo3jpg.jpg\",\n                           \"width\": 1024,\n                           \"height\": 1280\n                       }\n                   ]\n               }\n           ],\n           \"helpfulVotes\": 0,\n           \"photoIds\": [\n               454793848,\n               454793847,\n               454793846,\n               454793845,\n               454793844\n           ],\n           \"route\": {\n               \"url\": \"/ShowUserReviews-g35805-d225105-r749775985-The_Peninsula_Chicago-Chicago_Illinois.html\"\n           },\n           \"socialStatistics\": {\n               \"followCount\": 0,\n               \"isFollowing\": false,\n               \"isLiked\": false,\n               \"isReposted\": false,\n               \"isSaved\": false,\n               \"likeCount\": 0,\n               \"repostCount\": 0,\n               \"tripCount\": 0\n           },\n           \"status\": \"PUBLISHED\",\n           \"userId\": \"0D4C1CAEE30ECD6091708CE72AE5B2F2\",\n           \"originalLanguage\": \"en\",\n           \"labels\": [],\n           \"alertStatus\": false\n       }\n   ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response-400:",
+          "content": "HTTP/1.1 400 Bad Request\n{\n  \"logref\": \"error\",\n  \"message\": \"Required String parameter 'url' is not present\",\n  \"links\": []\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response-404:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"logref\": \"error\",\n  \"message\": \"could not find product for parametes: 'https://www.tripadvisor.com/Hotel-test-review.html'\",\n  \"links\": []\n}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "MissingParameter",
+            "description": "<p>Some required parameter are missing.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "ProductNotFound",
+            "description": "<p>The product for the requested parameters could not be found.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "./axesso_rest_doc.js",
+    "groupTitle": "TripAdvisor"
   },
   {
     "type": "get",

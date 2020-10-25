@@ -367,7 +367,7 @@
  * @apiSuccess {Int} currentPage  Returned page.
  * @apiSuccess {String} sortStrategy Sort option.
  * @apiSuccess {String} domainCode Amazon domain, which was used.
- * @apiSuccess {Json} filters Map of used filters.
+ * @apiSuccess {Object} filters Map of used filters.
  * @apiSuccess {Int} countReviews  Number of reviews.
  * @apiSuccess {Int} lastPage  The last page.
  * @apiSuccess {Object[]} reviews List of reviews for the given asin and page.
@@ -1040,7 +1040,7 @@
  * @apiSuccess {Int} currentPage  Returned page.
  * @apiSuccess {String} sortStrategy Sort option.
  * @apiSuccess {String} domainCode Amazon domain, which was used.
- * @apiSuccess {Json} filters Map of used filters.
+ * @apiSuccess {Object} filters Map of used filters.
  * @apiSuccess {Int} countReviews  Number of reviews.
  * @apiSuccess {Int} lastPage  The last page.
  * @apiSuccess {Object[]} reviews List of reviews for the given asin and page.
@@ -1115,6 +1115,301 @@
  *     {
  *       "logref": "error",
  *       "message": "could not find product for parametes asin: ABCSGDHW78",
+ *       "links": []
+ *     }
+ *
+ *
+ */
+
+ /**
+ * @api {get} prd2.axesso.de/tpa/tripadvisor-lookup-reviews Request Review Information
+ * @apiVersion 1.2.0
+ * @apiName lookupReviews
+ * @apiGroup TripAdvisor
+ *
+ * @apiHeader Authorization API key required in this format: axesso-api-key=xxxxx
+ * @apiHeader Content-Type (application/json).
+ * @apiParam {String} url Url to get reviews from. (required).
+ * @apiParamExample {query} Input-Example
+ *    http://api-prd2.axesso.de/tpa/tripadvisor-lookup-reviews?url=https://www.tripadvisor.com/Hotel_Review-g35805-d225105-Reviews-The_Peninsula_Chicago-Chicago_Illinois.html
+ *
+ * @apiSuccess {String} responseStatus 	Response status of request.
+ * @apiSuccess {String} responseMessage  Response Message of request.
+ * @apiSuccess {String} previousPage Url of the last page.
+ * @apiSuccess {String} currentPage  Url of the current page.
+ * @apiSuccess {String} nextPage Url of the next page.
+ * @apiSuccess {Int} countReviews Number of reviews.
+ * @apiSuccess {Object[]} reviews List of reviews for the given url.
+ * @apiSuccess {Int} reviews.id Unique review id.
+ * @apiSuccess {String} reviews.url Uri path to this particular review.
+ * @apiSuccess {String} reviews.createdDate Date of review creation.
+ * @apiSuccess {String} reviews.publishedDate Date when review published.
+ * @apiSuccess {Object} reviews.provider Information about provider.
+ * @apiSuccess {String} reviews.provider.isLocalProvider Identifies local provider.
+ * @apiSuccess {String} reviews.provider.isToolsProvider Identifies tool provider.
+ * @apiSuccess {Object} reviews.userProfile Information about user.
+ * @apiSuccess {String} reviews.userProfile.id Profile unique identifier.
+ * @apiSuccess {String} reviews.userProfile.userId User unique identifier.
+ * @apiSuccess {String} reviews.userProfile.isMe Identifies if user is logged in user.
+ * @apiSuccess {String} reviews.userProfile.isVerified Identifies if review is verfied.
+ * @apiSuccess {String} reviews.userProfile.displayName Displayed name of user.
+ * @apiSuccess {String} reviews.userProfile.username Username.
+ * @apiSuccess {Object} reviews.userProfile.avatar Information about used avatar.
+ * @apiSuccess {String} reviews.userProfile.hometown Hometown of user.
+ * @apiSuccess {Object} reviews.userProfile.contributionCounts Number of contributions.
+ * @apiSuccess {String} reviews.userProfile.route Url path to user profile.
+ * @apiSuccess {String} reviews.userProfile.isFollowing Identifies if user is following this location.
+ * @apiSuccess {String} reviews.title Title of review.
+ * @apiSuccess {String} reviews.language Review language.
+ * @apiSuccess {Object} reviews.tripInfo Information about the trip.
+ * @apiSuccess {Object[]} reviews.additionalRatings Rating of particular items (Room, Service ..).
+ * @apiSuccess {Object} reviews.mgmtResponse Response of location management.
+ * @apiSuccess {Int} reviews.mgmtResponse.id Id of response.
+ * @apiSuccess {String} reviews.mgmtResponse.language Language of response.
+ * @apiSuccess {String} reviews.mgmtResponse.text Resposne text.
+ * @apiSuccess {String} reviews.mgmtResponse.publishedDate Date response published.
+ * @apiSuccess {String} reviews.mgmtResponse.username Username who entered response.
+ * @apiSuccess {String} reviews.mgmtResponse.connectionToSubject Position to subject.
+ * @apiSuccess {String} reviews.text Review text.
+ * @apiSuccess {String} reviews.text Username.
+ * @apiSuccess {Int} reviews.locationId Unique identifier of location.
+ * @apiSuccess {Int} reviews.rating Rating.
+ * @apiSuccess {String} reviews.absoluteUrl Url path to this review.
+ * @apiSuccess {Int} reviews.mcid Unique identifier of mc.
+ * @apiSuccess {Int} reviews.mtProviderId Unique identifier of provider.
+ * @apiSuccess {Object[]} reviews.photos List of photos related to the review and location.
+ * @apiSuccess {Int} reviews.helpfulVotes Rating.
+ * @apiSuccess {Int[]} reviews.photoIds List of photo ids.
+ * @apiSuccess {Object} reviews.route Uri path to the particular review.
+ * @apiSuccess {Object} reviews.socialStatistics Information about social statistics.
+ * @apiSuccess {String} reviews.status Status of review.
+ * @apiSuccess {String} reviews.userId Unique identifier of user.
+ * @apiSuccess {String} reviews.originalLanguage Language in which review was entered.
+ * @apiSuccess {String[]} reviews.labels List of labels.
+ * @apiSuccess {Boolean} reviews.alertStatus Alert status.
+ *
+ * @apiSuccessExample Success-Response-example:
+ *     HTTP/1.1 200 OK
+ *	{
+ *  "responseStatus": "PRODUCT_FOUND_RESPONSE",
+ *    "responseMessage": "Product successfully found!",
+ *    "previousPage": null,
+ *    "currentPage": "https://www.tripadvisor.com/Hotel_Review-g35805-d225105-Reviews-The_Peninsula_Chicago-Chicago_Illinois.html",
+ *    "nextPage": "/Hotel_Review-g35805-d225105-Reviews-or5-The_Peninsula_Chicago-Chicago_Illinois.html",
+ *    "countReviews": 1863,
+ *    "reviews": [
+ *        {
+ *            "id": 749775985,
+ *            "url": "/ShowUserReviews-g35805-d225105-r749775985-The_Peninsula_Chicago-Chicago_Illinois.html",
+ *            "createdDate": "2020-03-07",
+ *            "publishedDate": "2020-03-07",
+ *            "provider": {
+ *                "isLocalProvider": true,
+ *                "isToolsProvider": true
+ *            },
+ *            "userProfile": {
+ *                "id": "0D4C1CAEE30ECD6091708CE72AE5B2F2",
+ *                "userId": "0D4C1CAEE30ECD6091708CE72AE5B2F2",
+ *                "isMe": false,
+ *                "isVerified": false,
+ *                "displayName": "Paul Bkk",
+ *                "username": "paulbkk888",
+ *                "avatar": {
+ *                    "id": 438816317,
+ *                    "photoSizes": [
+ *                        {
+ *                            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/27/ce/3d/caption.jpg?w=100&h=100&s=1",
+ *                            "width": 0,
+ *                            "height": 0
+ *                        },
+ *                        {
+ *                            "url": "https://media-cdn.tripadvisor.com/media/photo-t/1a/27/ce/3d/caption.jpg",
+ *                            "width": 50,
+ *                            "height": 50
+ *                        },
+ *                        {
+ *                            "url": "https://media-cdn.tripadvisor.com/media/photo-l/1a/27/ce/3d/caption.jpg",
+ *                            "width": 150,
+ *                            "height": 150
+ *                        },
+ *                        {
+ *                            "url": "https://media-cdn.tripadvisor.com/media/photo-i/1a/27/ce/3d/caption.jpg",
+ *                            "width": 180,
+ *                            "height": 200
+ *                        },
+ *                        {
+ *                            "url": "https://media-cdn.tripadvisor.com/media/photo-f/1a/27/ce/3d/caption.jpg",
+ *                            "width": 205,
+ *                            "height": 205
+ *                        },
+ *                        {
+ *                            "url": "https://media-cdn.tripadvisor.com/media/photo-o/1a/27/ce/3d/caption.jpg",
+ *                            "width": 450,
+ *                            "height": 450
+ *                        }
+ *                    ]
+ *                },
+ *                "hometown": {
+ *                    "locationId": 293916,
+ *                    "fallbackString": "293916",
+ *                    "location": {
+ *                        "locationId": 293916,
+ *                        "additionalNames": {
+ *                            "long": "Bangkok, Thailand"
+ *                        },
+ *                        "name": "Bangkok"
+ *                    }
+ *                },
+ *                "contributionCounts": {
+ *                    "sumAllUgc": 112,
+ *                    "helpfulVote": 5
+ *                },
+ *                "route": {
+ *                    "url": "/Profile/paulbkk888"
+ *                },
+ *                "isFollowing": false
+ *            },
+ *            "title": "Excellent service staff",
+ *            "language": "en",
+ *            "tripInfo": {
+ *                "stayDate": "2019-04-30",
+ *                "tripType": "BUSINESS"
+ *            },
+ *            "additionalRatings": [],
+ *            "mgmtResponse": {
+ *                "id": 750131856,
+ *                "language": "en",
+ *                "text": "Dear paulbkk888, \n\nWe are delighted to learn that you enjoyed your stay with us and our service.  We also appreciate your comments on the décor and cuisine. \n\nThank you for choosing The Peninsula as the place to stay when visiting Chicago.  We all look forward to welcoming you back again soon. \n\nWarm regards, \n\nMax Schroeder \nHotel Manager  ",
+ *                "publishedDate": "2020-03-09",
+ *                "username": "Peninsula_CH",
+ *                "connectionToSubject": "Manager"
+ *            },
+ *            "text": "Excellent service staff for 6 stars hotel. \nLove all new decoration of main lobby, and room. Must see and check point for hangout at rooftop with 360 building view. \nAll good for breakfast with a signature peninsula egg menu . ",
+ *            "username": "paulbkk888",
+ *            "locationId": 225105,
+ *            "rating": 5,
+ *            "absoluteUrl": "https://www.tripadvisor.com/ShowUserReviews-g35805-d225105-r749775985-The_Peninsula_Chicago-Chicago_Illinois.html",
+ *            "mcid": 0,
+ *            "mtProviderId": 0,
+ *            "photos": [
+ *                {
+ *                    "id": 454793848,
+ *                    "statuses": [
+ *                        "PUBLISHED"
+ *                    ],
+ *                    "photoSizes": [
+ *                        {
+ *                            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/1b/9a/78/photo4jpg.jpg?w=100&h=100&s=1",
+ *                            "width": 0,
+ *                            "height": 0
+ *                        },
+ *                        {
+ *                            "url": "https://media-cdn.tripadvisor.com/media/photo-t/1b/1b/9a/78/photo4jpg.jpg",
+ *                            "width": 50,
+ *                            "height": 50
+ *                        }
+ *                    ]
+ *                },
+ *                {
+ *                    "id": 454793847,
+ *                    "statuses": [
+ *                        "PUBLISHED"
+ *                    ],
+ *                    "photoSizes": [
+ *                        {
+ *                            "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/1b/9a/77/photo3jpg.jpg?w=100&h=100&s=1",
+ *                            "width": 0,
+ *                            "height": 0
+ *                        },
+ *                        {
+ *                            "url": "https://media-cdn.tripadvisor.com/media/photo-t/1b/1b/9a/77/photo3jpg.jpg",
+ *                            "width": 50,
+ *                            "height": 50
+ *                        },
+ *                        {
+ *                            "url": "https://media-cdn.tripadvisor.com/media/photo-l/1b/1b/9a/77/photo3jpg.jpg",
+ *                            "width": 150,
+ *                            "height": 150
+ *                        },
+ *                        {
+ *                            "url": "https://media-cdn.tripadvisor.com/media/photo-f/1b/1b/9a/77/photo3jpg.jpg",
+ *                            "width": 164,
+ *                            "height": 205
+ *                        },
+ *                        {
+ *                            "url": "https://media-cdn.tripadvisor.com/media/photo-i/1b/1b/9a/77/photo3jpg.jpg",
+ *                            "width": 180,
+ *                            "height": 200
+ *                        },
+ *                        {
+ *                            "url": "https://media-cdn.tripadvisor.com/media/photo-s/1b/1b/9a/77/photo3jpg.jpg",
+ *                            "width": 360,
+ *                            "height": 450
+ *                        },
+ *                        {
+ *                            "url": "https://media-cdn.tripadvisor.com/media/photo-p/1b/1b/9a/77/photo3jpg.jpg",
+ *                            "width": 550,
+ *                            "height": 688
+ *                        },
+ *                        {
+ *                            "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/1b/1b/9a/77/photo3jpg.jpg",
+ *                            "width": 1024,
+ *                            "height": 1280
+ *                        },
+ *                        {
+ *                            "url": "https://media-cdn.tripadvisor.com/media/photo-w/1b/1b/9a/77/photo3jpg.jpg",
+ *                            "width": 1024,
+ *                            "height": 1280
+ *                        }
+ *                    ]
+ *                }
+ *            ],
+ *            "helpfulVotes": 0,
+ *            "photoIds": [
+ *                454793848,
+ *                454793847,
+ *                454793846,
+ *                454793845,
+ *                454793844
+ *            ],
+ *            "route": {
+ *                "url": "/ShowUserReviews-g35805-d225105-r749775985-The_Peninsula_Chicago-Chicago_Illinois.html"
+ *            },
+ *            "socialStatistics": {
+ *                "followCount": 0,
+ *                "isFollowing": false,
+ *                "isLiked": false,
+ *                "isReposted": false,
+ *                "isSaved": false,
+ *                "likeCount": 0,
+ *                "repostCount": 0,
+ *                "tripCount": 0
+ *            },
+ *            "status": "PUBLISHED",
+ *            "userId": "0D4C1CAEE30ECD6091708CE72AE5B2F2",
+ *            "originalLanguage": "en",
+ *            "labels": [],
+ *            "alertStatus": false
+ *        }
+ *    ]
+ * }
+ *
+ * @apiErrorExample Error-Response-400:
+ *     HTTP/1.1 400 Bad Request
+ *     {
+ *       "logref": "error",
+ *       "message": "Required String parameter 'url' is not present",
+ *       "links": []
+ *     }
+ *
+ * @apiError MissingParameter Some required parameter are missing.
+ * @apiError ProductNotFound The product for the requested parameters could not be found.
+ *
+ * @apiErrorExample Error-Response-404:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "logref": "error",
+ *       "message": "could not find product for parametes: 'https://www.tripadvisor.com/Hotel-test-review.html'",
  *       "links": []
  *     }
  *
