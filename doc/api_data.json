@@ -1,33 +1,5 @@
 [
   {
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "optional": false,
-            "field": "varname1",
-            "description": "<p>No type.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "varname2",
-            "description": "<p>With type.</p>"
-          }
-        ]
-      }
-    },
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "./doc/main.js",
-    "group": "/Users/ROTAEV/Work/git/axesso-api-doc/doc/main.js",
-    "groupTitle": "/Users/ROTAEV/Work/git/axesso-api-doc/doc/main.js",
-    "name": ""
-  },
-  {
     "type": "get",
     "url": "prd.axesso.de/usr/user-account-info",
     "title": "Request Account Information",
@@ -1875,263 +1847,32 @@
     "groupTitle": "Amazon"
   },
   {
-    "type": "get",
-    "url": "prd.axesso.de/amz/amazon-lookup-reviews",
-    "title": "Request Review Information",
-    "version": "1.2.0",
-    "name": "lookupReviews",
-    "group": "Amazon",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "optional": false,
-            "field": "Authorization",
-            "description": "<p>API key required in this format: axesso-api-key=xxxxx</p>"
-          },
-          {
-            "group": "Header",
-            "optional": false,
-            "field": "Content-Type",
-            "description": "<p>(application/json).</p>"
-          }
-        ]
-      }
-    },
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "asin",
-            "description": "<p>Product asin to lookup (required).</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "domainCode",
-            "description": "<p>Amazon domain, which should be used (required).</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "int",
-            "optional": false,
-            "field": "page",
-            "description": "<p>Page, which will be returned (Pagination, required).</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "sortBy",
-            "description": "<p>Sort option. Possible values: &quot;recent&quot; (default), &quot;helpful&quot; (optional).</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "filters",
-            "description": "<p>Semicolon seperated list of filters. E.g: &quot;reviewerType=avp_only_reviews;filterByStar=two_star&quot; (optional).</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Input-Example",
-          "content": "http://api-prd.axesso.de/amz/amazon-lookup-reviews?domainCode=com&page=1&asin=B079338B9X&sortBy=recent&filters=reviewerType=avp_only_reviews;filterByStar=two_star",
-          "type": "query"
-        }
-      ]
-    },
     "success": {
       "fields": {
         "Success 200": [
           {
             "group": "Success 200",
-            "type": "String",
             "optional": false,
-            "field": "responseStatus",
-            "description": "<p>Response status of request.</p>"
+            "field": "varname1",
+            "description": "<p>No type.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "responseMessage",
-            "description": "<p>Response Message of request.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "asin",
-            "description": "<p>Used asin.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Int",
-            "optional": false,
-            "field": "currentPage",
-            "description": "<p>Returned page.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "sortStrategy",
-            "description": "<p>Sort option.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "domainCode",
-            "description": "<p>Amazon domain, which was used.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "filters",
-            "description": "<p>Map of used filters.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Int",
-            "optional": false,
-            "field": "countReviews",
-            "description": "<p>Number of reviews.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Int",
-            "optional": false,
-            "field": "lastPage",
-            "description": "<p>The last page.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Object[]",
-            "optional": false,
-            "field": "reviews",
-            "description": "<p>List of reviews for the given asin and page.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "reviews.reviewId",
-            "description": "<p>Unique review id.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "reviews.parentReviewId",
-            "description": "<p>Parent review id.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "reviews.text",
-            "description": "<p>Review text.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "reviews.date",
-            "description": "<p>Date of review creation.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "reviews.rating",
-            "description": "<p>Review rating.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "reviews.title",
-            "description": "<p>Revie title.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "reviews.userName",
-            "description": "<p>User created the review.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Int",
-            "optional": false,
-            "field": "reviews.numberOfHelpful",
-            "description": "<p>Number of user who found review helpful.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Array",
-            "optional": false,
-            "field": "reviews.imageUrlList",
-            "description": "<p>List of images which belong to the review.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "reviews.verified",
-            "description": "<p>Indication if purchase is verfied.</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response-example:",
-          "content": "    HTTP/1.1 200 OK\n\t{\n   \"responseStatus\": \"PRODUCT_FOUND_RESPONSE\",\n   \"responseMessage\": \"Product successfully found!\",\n   \"asin\": \"B079338B9X\",\n   \"currentPage\": 1,\n   \"sortStrategy\": \"recent\",\n   \"domainCode\": \"com\",\n   \"filters\": {\n       \"filterByStar\": \"two_star\",\n       \"reviewerType\": \"avp_only_reviews\"\n   },\n   \"productTitle\": \"YnM Cotton Duvet Cover for Weighted Blankets (Dark Grey, 48''x72'')\",\n   \"countReviews\": 119,\n   \"lastPage\": 12,\n   \"reviews\": [\n       {\n           \"reviewId\": \"R2UVTBHEC0YG9O\",\n           \"parentReviewId\": null,\n           \"text\": \"The duvet cover was sized to go over the matching weighted blanket but the cover is too small! The weighted blanket has to be bunched to fit inside. Beautiful cover...extremely disappointed about fit.\",\n           \"date\": \"Reviewed in the United States on October 1, 2020\",\n           \"rating\": \"2.0 out of 5 stars\",\n           \"title\": \"Duvet cover dimensions inaccurate.\",\n           \"userName\": \"Amazon Customer\",\n           \"numberOfHelpful\": 0,\n           \"imageUrlList\": null,\n           \"verified\": true\n       },\n       {\n           \"reviewId\": \"R24VPRY2RXBFZK\",\n           \"parentReviewId\": null,\n           \"text\": \"The blanket comes unattached from the loops and you can’t keep the blanket even. I tried all different types of tying techniques and they all came loose. The feel of the blanket is great and it does help keep you cooler. It is just pointless if the blanket inside won’t stay attached. I bought it for the YnM weighted blanket, therefore it is the same brand and made for each other.\",\n           \"date\": \"Reviewed in the United States on September 10, 2020\",\n           \"rating\": \"2.0 out of 5 stars\",\n           \"title\": \"Soft, cooling but read review\",\n           \"userName\": \"Gemini_Butterfly\",\n           \"numberOfHelpful\": 0,\n           \"imageUrlList\": null,\n           \"verified\": true\n       }\n   ]\n }",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response-400:",
-          "content": "HTTP/1.1 400 Bad Request\n{\n  \"logref\": \"error\",\n  \"message\": \"Required String parameter 'asin' is not present\",\n  \"links\": []\n}",
-          "type": "json"
-        },
-        {
-          "title": "Error-Response-404:",
-          "content": "HTTP/1.1 404 Not Found\n{\n  \"logref\": \"error\",\n  \"message\": \"could not find product for parametes asin: ABCSGDHW78\",\n  \"links\": []\n}",
-          "type": "json"
-        }
-      ],
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "MissingParameter",
-            "description": "<p>Some required parameter are missing.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "ProductNotFound",
-            "description": "<p>The product for the requested parameters could not be found.</p>"
+            "field": "varname2",
+            "description": "<p>With type.</p>"
           }
         ]
       }
     },
-    "filename": "./axesso_rest_doc.js",
-    "groupTitle": "Amazon"
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "./doc/main.js",
+    "group": "C__Users_ROTAEV_Desktop_Viktor_DEV_Service_Access_git_axesso_axesso_api_doc_doc_main_js",
+    "groupTitle": "C__Users_ROTAEV_Desktop_Viktor_DEV_Service_Access_git_axesso_axesso_api_doc_doc_main_js",
+    "name": ""
   },
   {
     "type": "get",
