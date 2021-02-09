@@ -1,6 +1,6 @@
 {
   "name": "Axesso API documentation",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "Please contact us to get access to the production API: <a href=\"mailto:support@axesso.de\"><b style=\"font-size:24px;\">support@axesso.de</b></a> <br /> You can also find our SDK @ <a href=\"https://github.com/Axesso/axesso-java-client\"><b style=\"font-size:24px;\">https://github.com/Axesso/axesso-java-client</b></a>",
   "title": "Axesso rest API documentation",
   "url" : "http://api-",

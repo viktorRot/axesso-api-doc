@@ -1,7 +1,7 @@
 
 /**
  * @api {get} prd.axesso.de/amz/amazon-lookup-product Request Product Information
- * @apiVersion 1.2.0
+ * @apiVersion 2.0.0
  * @apiName GetProductInformation
  * @apiGroup Amazon
  *
@@ -181,7 +181,7 @@
 
  /**
  * @api {get} prd.axesso.de/amz/amazon-lookup-buy-recommendations Request Recommendations
- * @apiVersion 1.2.0
+ * @apiVersion 2.0.0
  * @apiName GetBuyRecommendations
  * @apiGroup Amazon
  *
@@ -248,7 +248,7 @@
 
  /**
  * @api {get} prd.axesso.de/amz/amazon-search-by-keyword-asin Search Products by Keyword
- * @apiVersion 1.2.0
+ * @apiVersion 2.0.0
  * @apiName SearchByKeyword
  * @apiGroup Amazon
  *
@@ -347,7 +347,7 @@
 
  /**
  * @api {get} prd.axesso.de/amz/amazon-lookup-reviews Request Review Information
- * @apiVersion 1.2.0
+ * @apiVersion 2.0.0
  * @apiName lookupReviews
  * @apiGroup Amazon
  *
@@ -449,8 +449,8 @@
  */
 
  /**
- * @api {get} prd.axesso.de/amz/amazon-lookup-prices Request all Seller Prices
- * @apiVersion 1.2.0
+ * @api {get} prd.axesso.de/v2/amz/amazon-lookup-prices Request all Seller Prices
+ * @apiVersion 2.0.0
  * @apiName LookupPrices
  * @apiGroup Amazon
  *
@@ -458,10 +458,10 @@
  * @apiHeader Content-Type (application/json).
  * @apiParam {String} asin Asin of the product (required).
  * @apiParam {String} domainCode Amazon domain, which should be used (required).
- * @apiParam {int} numberOfPages Number of pages to return (optional, default 1).
- * @apiParam {String} condition Filter for condition (optional, default New).
+ * @apiParam {int} page Number of pages to return (optional, default 1).
+ * @apiParam {String} condition Filter for condition (optional, default New)(Currently not supported).
  * @apiParamExample {query} Input-Example
- *    http://api-prd.axesso.de/amz/amazon-lookup-prices?asin=B01AC6PRK4&domainCode=de&numberOfPages=1&condition=new
+ *    http://api-prd.axesso.de/v2/amz/amazon-lookup-prices?asin=B01AC6PRK4&domainCode=de&page=1
  *
  * @apiSuccess {String} responseStatus 	Response status of request.
  * @apiSuccess {String} responseMessage  Response Message of request.
@@ -553,7 +553,7 @@
 
  /**
  * @api {get} prd.axesso.de/amz/sort-options Request Sort Options
- * @apiVersion 1.2.0
+ * @apiVersion 2.0.0
  * @apiName SortOptions
  * @apiGroup Amazon
  *
@@ -606,7 +606,7 @@
 
  /**
  * @api {get} prd2.axesso.de/wlm/walmart-lookup-product Request Product Information
- * @apiVersion 1.2.0
+ * @apiVersion 2.0.0
  * @apiName GetProductInformation
  * @apiGroup Walmart
  *
@@ -735,7 +735,7 @@
 
   /**
  * @api {get} prd2.axesso.de/wlm/walmart-search-by-keyword Search Products by Keyword
- * @apiVersion 1.2.0
+ * @apiVersion 2.0.0
  * @apiName SearchByKeyword
  * @apiGroup Walmart
  *
@@ -814,7 +814,7 @@
 
   /**
  * @api {get} prd2.axesso.de/alb/alibaba-search-by-keyword Search Products by Keyword
- * @apiVersion 1.2.0
+ * @apiVersion 2.0.0
  * @apiName SearchByKeyword
  * @apiGroup Alibaba
  *
@@ -880,7 +880,7 @@
 
   /**
  * @api {get} prd2.axesso.de/alb/alibaba-lookup-product Request Product Information
- * @apiVersion 1.2.0
+ * @apiVersion 2.0.0
  * @apiName GetProductInformation
  * @apiGroup Alibaba
  *
@@ -977,7 +977,7 @@
 
  /**
  * @api {get} prd.axesso.de/usr/user-account-info Request Account Information
- * @apiVersion 1.2.0
+ * @apiVersion 2.0.0
  * @apiName GetAccountInformation
  * @apiGroup Account Info
  *
@@ -1020,7 +1020,7 @@
 
  /**
  * @api {get} prd2.axesso.de/tpa/tripadvisor-lookup-reviews Request Review Information
- * @apiVersion 1.2.0
+ * @apiVersion 2.0.0
  * @apiName lookupReviews
  * @apiGroup TripAdvisor
  *
